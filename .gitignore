@@ -5,4 +5,5 @@ config.js
 tree.json
 visited.json
 collected.json
+index.html
 screens/
