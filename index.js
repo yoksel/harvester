@@ -6,8 +6,10 @@ const getChildrens = (items) => {
 
   const childrensMarkupList = Object.keys(newItems).map(key => {
     const item = newItems[key].data;
+    const childrenMarkup = getChildrens(newItems[key]);
+
     if(!item) {
-      return '';
+      return childrenMarkup;
     }
 
     console.log('\nitem', item);
@@ -16,7 +18,11 @@ const getChildrens = (items) => {
     if(item.linkText !== '' && item.linkText !== linkText) {
       linkText += ` (${item.linkText})`;
     }
-    return `<li><a href="${item.url}">${linkText}</a></li>`
+    return `<li>
+      <a href="${item.url}">${linkText}</a>
+
+      ${childrenMarkup}
+    </li>`
   })
 
   if(childrensMarkupList.length > 0) {
