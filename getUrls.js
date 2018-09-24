@@ -11,6 +11,12 @@ const {
 } = require('./rules');
 
 const {
+  loginUrl,
+
+  username_selector,
+  password_selector,
+  submit_selector,
+
   username,
   password
 } = require('./credits');
@@ -32,11 +38,6 @@ let visitedUrls = {};
 const tree = {};
 
 let counter = 0;
-
-const USERNAME_SELECTOR = '#user';
-const PASSWORD_SELECTOR = '#lj_loginwidget_password';
-const BUTTON_SELECTOR = '.lj_login_form .b-loginform-btn--auth';
-const CLOSE_ADV_SELECTOR = '.ljsale__hide';
 
 const findMatchOnce = ignoreMatches.map(item => {
   return {
@@ -125,15 +126,15 @@ var searchLinks = (currentUrl) => {
       const page = await browser.newPage();
 
       // Login
-      await page.goto('https://www.livejournal.com/login.bml');
+      await page.goto(loginUrl);
 
-      await page.click(USERNAME_SELECTOR);
+      await page.click(username_selector);
       await page.keyboard.type(username);
 
-      await page.click(PASSWORD_SELECTOR);
+      await page.click(password_selector);
       await page.keyboard.type(password);
 
-      await page.click(BUTTON_SELECTOR);
+      await page.click(submit_selector);
 
       await page.waitForNavigation();
 
