@@ -1,5 +1,18 @@
 module.exports = {
   max: 200,
+  makeScreens: true,
+  // if true, ignores height from screenSizes
+  screenFullPage: false,
+  screenSizes: [
+    {
+      width: 320,
+      height: 1000
+    },
+    {
+      width: 1280,
+      height: 1000
+    },
+  ],
   startUrl: 'https://livejournal.com/',
   ignoreStrings: [
     '#',

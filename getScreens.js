@@ -4,38 +4,31 @@ const puppeteer = require('puppeteer');
 
 const {
   max,
-  credits,
+  makeScreens,
+  screenFullPage,
+  screenSizes,
   startUrl,
   ignoreStrings,
   ignoreMatches
-} = require('./config');
+} = require('./rules');
+
+const credits = require('./credits');
+
+const {
+  clearUrlProtocol,
+  clearUrlDomain,
+  clearText,
+  makeLogin,
+  writeFile,
+  writeAllFiles,
+  writeVisitedFile,
+  writeCollectedFile,
+  writeTreeFile,
+  writeIndexFile
+} = require('./helpers');
 
 // Links list to get screens
 const urls = require('./urls');
-
-const USERNAME_SELECTOR = '#user';
-const PASSWORD_SELECTOR = '#lj_loginwidget_password';
-const BUTTON_SELECTOR = '.lj_login_form .b-loginform-btn--auth';
-const CLOSE_ADV_SELECTOR = '.ljsale__hide';
-
-const screenSizes = [
-  {
-    width: 320,
-    height: 1000
-  },
-  // {
-  //   width: 760,
-  //   height: 1000
-  // },
-  {
-    width: 1280,
-    height: 1000
-  },
-  // {
-  //   width: 1400,
-  //   height: 1000
-  // }
-];
 
 (async () => {
   const browser = puppeteer
@@ -43,42 +36,26 @@ const screenSizes = [
     .then(async browser => {
 
     const page = await browser.newPage();
+    const fullPage = screenFullPage || false;
 
     // Login
-    await page.goto('https://www.livejournal.com/login.bml');
-    // await page.screenshot({path: 'screens/login.png'});
-    await page.click(USERNAME_SELECTOR);
-    await page.keyboard.type(credits.username);
-
-    await page.click(PASSWORD_SELECTOR);
-    await page.keyboard.type(credits.password);
-
-    await page.click(BUTTON_SELECTOR);
-
-    await page.waitForNavigation();
-    // await page.click(CLOSE_ADV_SELECTOR);
+    if(credits && credits.loginUrl) {
+      await makeLogin(page, credits);
+    }
 
     for (let i = 0; i < urls.length; i++) {
       const promises = [];
 
-      const url = urls[i].url;
-      let name = url
-        .replace(/livejournal.com/,'')
-        .replace(/(?:http|https):\/\//,'')
-        .replace(/.bml|.html/,'')
-        .replace(/^\/|\/$/g,'')
-        .replace(/^\.|\.$/g,'')
+      const url = urls[i];
+      let name = clearUrlDomain(url)
         .replace(/\//g,'_');
-      console.log('\nURL:', url);
-      // console.log('name(', name, ')');
-
-      if(url === 'https://livejournal.com/') {
-        name = 'main';
-      }
+      console.log(`\n${i}. URL: ${url}`);
 
       for (var k = screenSizes.length - 1; k >= 0; k--) {
         const width = screenSizes[k].width;
         const height = screenSizes[k].height;
+
+        console.log(`— ${width}x${fullPage ? 'full' : height}`);
 
         promises.push(browser.newPage()
           .then(async page => {
@@ -87,7 +64,7 @@ const screenSizes = [
 
             await page.screenshot({
               path: `screens/${name}--${width}x${height}.png`,
-              fullPage: true
+              fullPage: screenFullPage || false
             });
           }))
       }
