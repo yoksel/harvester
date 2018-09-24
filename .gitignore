@@ -1,7 +1,7 @@
 node_modules/
 .DS_Store
 
-config.js
+credits.js
 
 tree.json
 visited.json

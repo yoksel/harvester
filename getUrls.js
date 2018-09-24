@@ -5,11 +5,15 @@ const puppeteer = require('puppeteer');
 
 const {
   max,
-  credits,
   startUrl,
   ignoreStrings,
   ignoreMatches
-} = require('./config');
+} = require('./rules');
+
+const {
+  username,
+  password
+} = require('./credits');
 
 const {
   clearUrlProtocol,
@@ -124,10 +128,10 @@ var searchLinks = (currentUrl) => {
       await page.goto('https://www.livejournal.com/login.bml');
 
       await page.click(USERNAME_SELECTOR);
-      await page.keyboard.type(credits.username);
+      await page.keyboard.type(username);
 
       await page.click(PASSWORD_SELECTOR);
-      await page.keyboard.type(credits.password);
+      await page.keyboard.type(password);
 
       await page.click(BUTTON_SELECTOR);
 
