@@ -4,7 +4,6 @@ const puppeteer = require('puppeteer');
 
 const {
   max,
-  makeScreens,
   screenFullPage,
   screenSizes,
   startUrl,

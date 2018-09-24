@@ -5,6 +5,7 @@ const puppeteer = require('puppeteer');
 
 const {
   max,
+  makeScreens, // enable screeens 1000x1000
   startUrl,
   ignoreStrings,
   ignoreMatches
@@ -176,10 +177,12 @@ var searchLinks = (currentUrl) => {
           collectedUrls[urlKey].title = title;
           collectedUrls[urlKey].name = urlKey.replace(/\//g,'_');
 
-          await page.screenshot({
-            path: `screens/${collectedUrls[urlKey].name}.png`,
-            // fullPage: true
-          });
+          if(makeScreens) {
+            await page.setViewport({ width: 1000, height: 1000 });
+            await page.screenshot({
+              path: `screens/${collectedUrls[urlKey].name}.png`
+            });
+          }
 
           // Move current to visited
           visitedUrls[urlKey] = Object.assign({}, collectedUrls[urlKey]);
