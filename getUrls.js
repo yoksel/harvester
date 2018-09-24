@@ -10,21 +10,13 @@ const {
   ignoreMatches
 } = require('./rules');
 
-const {
-  loginUrl,
-
-  username_selector,
-  password_selector,
-  submit_selector,
-
-  username,
-  password
-} = require('./credits');
+const credits = require('./credits');
 
 const {
   clearUrlProtocol,
   clearUrlDomain,
   clearText,
+  makeLogin,
   writeFile,
   writeAllFiles,
   writeVisitedFile,
@@ -111,7 +103,6 @@ const filterLinks = (params) => {
   return filtered;
 }
 
-
 // ------------------------------
 
 var searchLinks = (currentUrl) => {
@@ -126,17 +117,9 @@ var searchLinks = (currentUrl) => {
       const page = await browser.newPage();
 
       // Login
-      await page.goto(loginUrl);
-
-      await page.click(username_selector);
-      await page.keyboard.type(username);
-
-      await page.click(password_selector);
-      await page.keyboard.type(password);
-
-      await page.click(submit_selector);
-
-      await page.waitForNavigation();
+      if(credits && credits.loginUrl) {
+        await makeLogin(page, credits);
+      }
 
       await browser.newPage()
         .then(async page => {

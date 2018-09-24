@@ -106,10 +106,38 @@ const writeAllFiles = ({visitedUrls, collectedUrls, tree}) => {
   }
 };
 
+const makeLogin = async (page, credits) => {
+  const {
+    loginUrl,
+
+    username_selector,
+    password_selector,
+    submit_selector,
+
+    username,
+    password
+  } = credits;
+
+  await page.goto(loginUrl);
+
+  await page.click(username_selector);
+  await page.keyboard.type(username);
+
+  await page.click(password_selector);
+  await page.keyboard.type(password);
+
+  await page.click(submit_selector);
+
+  await page.waitForNavigation();
+
+  return true;
+}
+
 module.exports = {
   clearUrlProtocol,
   clearUrlDomain,
   clearText,
+  makeLogin,
   writeFile,
   writeAllFiles,
   writeVisitedFile,
