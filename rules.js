@@ -2,7 +2,7 @@ module.exports = {
   // Max iterations for searchin links
   max: 200,
   // Enable if you need screenshots
-  makeScreens: false,
+  makeScreens: true,
   // if true, ignores height from screenSizes
   screenFullPage: false,
   // Enable makeScreens to use screenSizes

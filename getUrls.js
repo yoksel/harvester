@@ -178,10 +178,14 @@ var searchLinks = (currentUrl) => {
           collectedUrls[urlKey].name = urlKey.replace(/\//g,'_');
 
           if(makeScreens) {
+            const screenPath = `screens/${collectedUrls[urlKey].name}.png`;
+
             await page.setViewport({ width: 1000, height: 1000 });
             await page.screenshot({
-              path: `screens/${collectedUrls[urlKey].name}.png`
+              path: screenPath
             });
+
+            collectedUrls[urlKey].screenPath = screenPath;
           }
 
           // Move current to visited

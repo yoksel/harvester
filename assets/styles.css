@@ -19,3 +19,11 @@ H1, H2, H3, H4 {
   max-width: 800px;
   margin: 0 auto;
 }
+
+.page-screen {
+  max-width: 250px;
+}
+
+.pages-item A {
+  display: block;
+}

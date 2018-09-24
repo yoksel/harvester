@@ -13,19 +13,30 @@ const getChildrens = (items) => {
         ${childrenMarkup}</li>`;
     }
 
-    let linkText = item.title;
-    if(item.linkText !== '' && item.linkText !== linkText) {
-      linkText += ` (${item.linkText})`;
+    let linkContent = item.title;
+
+    if(item.linkText !== '' && item.linkText !== linkContent) {
+      linkContent += ` (${item.linkText})`;
     }
-    return `<li>
-      <a href="${item.url}">${linkText}</a>
+
+    let img = '';
+    if(showScreens === true) {
+      img = `<img class="page-screen" src="${item.screenPath}"/>`;
+      img = `<a href="${item.url}">${img}</a>`
+    }
+
+    return `<li class="pages-item">
+
+      <a href="${item.url}">${linkContent}</a>
+
+      ${img}
 
       ${childrenMarkup}
     </li>`;
   })
 
   if(childrensMarkupList.length > 0) {
-    return `<ol>${childrensMarkupList.join('\n')}</ol>`;
+    return `<ol class="pages-list">${childrensMarkupList.join('\n')}</ol>`;
   }
 
   return '';
@@ -40,7 +51,7 @@ const listMarkup = keys.map(key => {
   const itemData = data[key];
   const itemDef = itemData.data;
 
-  const childrens = getChildrens(itemData);
+  let childrens = getChildrens(itemData);
 
   if(itemDef) {
     output += `<h3><a href="${itemDef.url}">${itemDef.title}</a></h3>`;
@@ -50,11 +61,6 @@ const listMarkup = keys.map(key => {
   }
 
   output += childrens;
-
-  // console.log(itemDef);
-  // console.log(childrens);
-  // console.log('---------');
-
-})
+});
 
 content.innerHTML = output;

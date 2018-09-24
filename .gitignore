@@ -6,5 +6,8 @@ credits.js
 tree.json
 visited.json
 collected.json
-index.html
+
 screens/*.png
+
+index.html
+screens.html

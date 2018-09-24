@@ -56,6 +56,30 @@ const writeIndexFile = (content) => {
   fs.readFile(indexSrcFile, 'utf8', function(error, markup){
     if(error) throw error;
     const dataStr = `<script type="text/javascript">
+const showLinks = true;
+const showScreens = false;
+const data = ${JSON.stringify(content, null, '\t')};
+</script>`;
+    markup = markup.replace('<!-- data -->', dataStr);
+
+    // Write markup to destination
+    fs.writeFile(indexFile, markup, function(error){
+      if(error) throw error;
+      // console.log(`Data was written to ${indexFile}`);
+    });
+  });
+};
+
+const writeScreensFile = (content) => {
+  const indexSrcFile = 'assets/index-src.html';
+  const indexFile = 'screens.html';
+
+  // Read markup from source
+  fs.readFile(indexSrcFile, 'utf8', function(error, markup){
+    if(error) throw error;
+    const dataStr = `<script type="text/javascript">
+const showLinks = false;
+const showScreens = true;
 const data = ${JSON.stringify(content, null, '\t')};
 </script>`;
     markup = markup.replace('<!-- data -->', dataStr);
@@ -75,6 +99,15 @@ const writeAllFiles = ({visitedUrls, collectedUrls, tree}) => {
   }
   catch(e) {
     console.log('Data file was not written');
+    console.log(e);
+  }
+
+  // Write visited links before searching next
+  try {
+    writeScreensFile(tree);
+  }
+  catch(e) {
+    console.log('Screens file was not written');
     console.log(e);
   }
 
