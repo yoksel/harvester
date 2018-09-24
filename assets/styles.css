@@ -1,0 +1,21 @@
+BODY {
+  font: 14px/1.4 Trebuchet MS, Arial, sans-serif;
+}
+
+A {
+  color: dodgerblue;
+}
+
+A:visited {
+  color: orchid;
+}
+
+H1, H2, H3, H4 {
+  margin-top: 0;
+  margin-bottom: .5em;
+}
+
+.wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}

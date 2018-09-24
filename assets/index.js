@@ -9,10 +9,9 @@ const getChildrens = (items) => {
     const childrenMarkup = getChildrens(newItems[key]);
 
     if(!item) {
-      return childrenMarkup;
+      return `<li><h4>${key}</h4>
+        ${childrenMarkup}</li>`;
     }
-
-    console.log('\nitem', item);
 
     let linkText = item.title;
     if(item.linkText !== '' && item.linkText !== linkText) {
@@ -22,11 +21,11 @@ const getChildrens = (items) => {
       <a href="${item.url}">${linkText}</a>
 
       ${childrenMarkup}
-    </li>`
+    </li>`;
   })
 
   if(childrensMarkupList.length > 0) {
-    return `<ul>${childrensMarkupList.join('\n')}</ul>`;
+    return `<ol>${childrensMarkupList.join('\n')}</ol>`;
   }
 
   return '';
@@ -54,7 +53,7 @@ const listMarkup = keys.map(key => {
 
   // console.log(itemDef);
   // console.log(childrens);
-  console.log('---------');
+  // console.log('---------');
 
 })
 
