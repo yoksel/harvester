@@ -2,17 +2,21 @@
 
 const puppeteer = require('puppeteer');
 
+const {
+  max,
+  credits,
+  startUrl,
+  ignoreStrings,
+  ignoreMatches
+} = require('./config');
+
+// Links list to get screens
 const urls = require('./urls');
 
 const USERNAME_SELECTOR = '#user';
 const PASSWORD_SELECTOR = '#lj_loginwidget_password';
 const BUTTON_SELECTOR = '.lj_login_form .b-loginform-btn--auth';
 const CLOSE_ADV_SELECTOR = '.ljsale__hide';
-
-const CREDITS = {
-  username: 'yokcel',
-  password: 'Yoksel37'
-};
 
 const screenSizes = [
   {
@@ -44,10 +48,10 @@ const screenSizes = [
     await page.goto('https://www.livejournal.com/login.bml');
     // await page.screenshot({path: 'screens/login.png'});
     await page.click(USERNAME_SELECTOR);
-    await page.keyboard.type(CREDITS.username);
+    await page.keyboard.type(credits.username);
 
     await page.click(PASSWORD_SELECTOR);
-    await page.keyboard.type(CREDITS.password);
+    await page.keyboard.type(credits.password);
 
     await page.click(BUTTON_SELECTOR);
 
