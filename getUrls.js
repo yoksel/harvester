@@ -242,6 +242,7 @@ var searchLinks = (currentUrl) => {
             await browser.close();
 
             trysCounter = 0;
+            const collectedKeys = Object.keys(collectedUrls);
             const urlKey = clearUrlDomain(currentUrl);
             delete collectedKeys[urlKey];
 
