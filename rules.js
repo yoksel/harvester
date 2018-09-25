@@ -39,13 +39,9 @@ module.exports = {
     '/media/',
 
     // Inbox
-    'inbox/?view',
     '&bookmark_on=',
     '&expand=',
     'inbox/?page=0',
-
-    // Interests
-    '/blogs/',
 
     // Customize
     'customize/?authas=',
@@ -67,6 +63,8 @@ module.exports = {
     'update.bml?usejournal',
     'update.bml?event',
     'update.bml?repost',
+    'update.bml?photo',
+    'update.bml?albums',
 
     // Profile
     '?socconns=',
@@ -87,7 +85,7 @@ module.exports = {
     'livejournal.com/?skip='
 
   ],
-  ignoreMatches: [
+  findOnce: [
     'community\\/account.bml\\?authas=',
     'community\\/moderate.bml\\?authas=',
     'community\\/mailing.bml\\?authas=',
@@ -95,7 +93,12 @@ module.exports = {
     'community\\/sentinvites.bml\\?authas=',
     'community\\/members.bml\\?authas=',
     'community\\/directory.bml\\?authas=',
-    'tools\\/communitylog\\?user=',
+    'tools\\/communitylog\\/\\?user=',
+
+    '\\/blogs\\/',
+
+    'subscriptions\\/comments.bml\\?talkid=',
+
     '[\\S]{2,20}.livejournal.com\\/\\d{2,10}.html',
     'community.livejournal.com\\/[\\S]{2,20}\/\\d{2,10}.html',
     '[\\S]{2,20}.livejournal.com\\/$',
@@ -106,6 +109,9 @@ module.exports = {
     '[\\S]{2,20}.livejournal.com\\/\\d{4}\/\\d{2}',
     '[\\S]{2,20}.livejournal.com\\/friends',
     '[\\S]{2,20}.livejournal.com\\/friendsfriends',
+
+    'livejournal.com\\/profile\\?userid=',
+
     'support\\/faq\/\\d{1,30}.html',
   ]
 };
