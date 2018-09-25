@@ -93,6 +93,8 @@ module.exports = {
     'community\\/sentinvites.bml\\?authas=',
     'community\\/members.bml\\?authas=',
     'community\\/directory.bml\\?authas=',
+    'community.livejournal.com\\/[\\S]{2,20}\/\\d{2,10}.html',
+    'community.livejournal.com\\/[\\S]{2,20}',
     'tools\\/communitylog\\/\\?user=',
 
     '\\/blogs\\/',
@@ -100,7 +102,6 @@ module.exports = {
     'subscriptions\\/comments.bml\\?talkid=',
 
     '[\\S]{2,20}.livejournal.com\\/\\d{2,10}.html',
-    'community.livejournal.com\\/[\\S]{2,20}\/\\d{2,10}.html',
     '[\\S]{2,20}.livejournal.com\\/$',
     '[\\S]{2,20}.livejournal.com\\/profile',
     '[\\S]{2,20}.livejournal.com\\/tag',
