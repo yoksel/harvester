@@ -32,6 +32,8 @@ let visitedUrls = {};
 const tree = {};
 
 let counter = 0;
+let trysCounter = 0;
+const trysMax = 5;
 
 const findMatchOnce = findOnce.map(item => {
   return {
@@ -260,6 +262,22 @@ var searchLinks = (currentUrl) => {
     .catch(async err => {
       console.log('Error in launching browser: ', err);
 
+      if(trysCounter < trysMax) {
+        console.log('Retry');
+
+        searchLinks(currentUrl);
+        trysCounter++;
+      }
+      else {
+        console.log('Go to the next link');
+
+        trysCounter = 0;
+        const urlKey = clearUrlDomain(currentUrl);
+        delete collectedKeys[urlKey];
+
+        const next = collectedUrls[collectedKeys[0]];
+        searchLinks(next.url);
+      }
     });
 }
 
