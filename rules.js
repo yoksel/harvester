@@ -21,8 +21,7 @@ module.exports = {
     '#',
     'void(0)',
     'random.bml',
-    '&page=1',
-    '&page=2',
+    'mailto:',
 
     // Actions
     'logout',
@@ -99,6 +98,7 @@ module.exports = {
     'friends\\/add.bml\\?user=',
 
     'customize\\/\\?search=',
+    'customize\\/\\?page=',
 
     'rsearch\\/\\?tags=',
 
