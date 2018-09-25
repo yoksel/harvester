@@ -225,8 +225,29 @@ var searchLinks = (currentUrl) => {
           // console.log('Successful!');
           counter++;
         })
-        .catch(err => {
-          console.log('Error:', err);
+        .catch(async err => {
+          console.log('Error while opening page:', err);
+
+          if(trysCounter < trysMax) {
+            console.log('Retry');
+            await browser.close();
+
+            searchLinks(currentUrl);
+            trysCounter++;
+          }
+          else {
+            console.log('Go to the next link');
+            await browser.close();
+
+            trysCounter = 0;
+            const urlKey = clearUrlDomain(currentUrl);
+            delete collectedKeys[urlKey];
+
+            const next = collectedUrls[collectedKeys[0]];
+            searchLinks(next.url);
+          }
+
+          return;
         })
 
       await browser.close();
@@ -242,7 +263,7 @@ var searchLinks = (currentUrl) => {
         if(counter < max) {
           searchLinks(next.url);
         }
-        else {
+        else if (trysCounter === 0) {
           console.log(`\nLimit ${max} is reached\n`);
         }
       }
@@ -261,23 +282,6 @@ var searchLinks = (currentUrl) => {
     })
     .catch(async err => {
       console.log('Error in launching browser: ', err);
-
-      if(trysCounter < trysMax) {
-        console.log('Retry');
-
-        searchLinks(currentUrl);
-        trysCounter++;
-      }
-      else {
-        console.log('Go to the next link');
-
-        trysCounter = 0;
-        const urlKey = clearUrlDomain(currentUrl);
-        delete collectedKeys[urlKey];
-
-        const next = collectedUrls[collectedKeys[0]];
-        searchLinks(next.url);
-      }
     });
 }
 
