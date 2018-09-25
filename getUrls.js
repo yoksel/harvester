@@ -5,6 +5,7 @@ const puppeteer = require('puppeteer');
 const opn = require('opn');
 
 const {
+  domainRestriction,
   max,
   makeScreens, // enable screeens 1000x1000
   startUrl,
@@ -59,9 +60,11 @@ const filterLinks = (params) => {
         return false;
       }
 
-      // No External link
-      if(cleanedUrl.indexOf('livejournal.com') < 0) {
-        return false;
+      if(domainRestriction) {
+        // No External link
+        if(cleanedUrl.indexOf(domainRestriction) < 0) {
+          return false;
+        }
       }
 
       // Check ignored words

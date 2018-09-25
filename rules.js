@@ -1,7 +1,8 @@
 module.exports = {
   // Max iterations for searchin links
   startUrl: 'http://livejournal.com',
-  max: 1000,
+  domainRestriction: 'livejournal.com/',
+  max: 100,
   // Enable if you need screenshots
   makeScreens: true,
   // if true, ignores height from screenSizes
