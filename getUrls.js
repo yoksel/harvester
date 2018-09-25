@@ -259,7 +259,10 @@ var searchLinks = (currentUrl) => {
 
     // console.log('tree', tree);
     // console.log('\nVISITEDURLS\n', visitedUrls);
-  })
+    })
+    .catch(e => {
+      console.log('Error in launching browser: ', e);
+    });
 }
 
 searchLinks(startUrl);
