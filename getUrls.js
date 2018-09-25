@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const puppeteer = require('puppeteer');
+const opn = require('opn');
 
 const {
   max,
@@ -34,6 +35,7 @@ const tree = {};
 let counter = 0;
 let trysCounter = 0;
 const trysMax = 5;
+let browserIsOpened = false;
 
 const findMatchOnce = findOnce.map(item => {
   return {
@@ -276,6 +278,11 @@ var searchLinks = (currentUrl) => {
         collectedUrls,
         tree
       });
+
+      if(!browserIsOpened) {
+        browserIsOpened = true;
+        opn('index.html');
+      }
 
     // console.log('tree', tree);
     // console.log('\nVISITEDURLS\n', visitedUrls);
