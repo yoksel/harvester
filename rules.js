@@ -1,6 +1,7 @@
 module.exports = {
   // Max iterations for searchin links
-  max: 200,
+  startUrl: 'http://livejournal.com',
+  max: 1000,
   // Enable if you need screenshots
   makeScreens: true,
   // if true, ignores height from screenSizes
@@ -16,7 +17,6 @@ module.exports = {
       height: 1000
     },
   ],
-  startUrl: 'https://livejournal.com/',
   ignoreStrings: [
     '#',
     'void(0)',
@@ -79,7 +79,6 @@ module.exports = {
 
     // Manage
     'manage.bml?sortby',
-    // 'bml?authas',
 
     // Livejournal
     'livejournal.com/?skip='
@@ -97,6 +96,27 @@ module.exports = {
     'community.livejournal.com\\/[\\S]{2,20}',
     'tools\\/communitylog\\/\\?user=',
 
+    'friends\\/add.bml\\?user=',
+
+    'customize\\/\\?search=',
+
+    'rsearch\\/\\?tags=',
+
+    'admin\\/entrylog.bml\\?url',
+
+    'shop\\/history.bml\\?authas=',
+    'shop\\/selfpromo\\/history\\?date',
+    'shop\\/renameaccount.bml\\?dest_name=',
+    'shop\\/journalpromo.bml\\?tab=',
+
+    'inbox\\/?page=',
+    'inbox\\/\\?[\\S]{2,20}&page=',
+
+    'ratings\\/community\\?country=[\\S]{1,5}\\&page=',
+    'ratings\\/community\\?country=[\\S]{1,5}',
+    'ratings\\/users\\?country=[\\S]{1,5}\\&page=',
+    'ratings\\/users\\?country=[\\S]{1,5}',
+
     '\\/blogs\\/',
 
     'subscriptions\\/comments.bml\\?talkid=',
@@ -112,7 +132,10 @@ module.exports = {
     '[\\S]{2,20}.livejournal.com\\/friendsfriends',
 
     'livejournal.com\\/profile\\?userid=',
+    'users\\.livejournal\\.com/[\\S]{2,20}/profile',
 
+    'support\\/highscores.bml\\?page=',
     'support\\/faq\/\\d{1,30}.html',
+    'support\\/help.bml\\?cat=',
   ]
 };
