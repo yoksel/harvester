@@ -47,8 +47,7 @@ const findMatchOnce = findOnce.map(item => {
 
 const filterLinks = (params) => {
   const {links, visitedUrls, collectedUrls} = params;
-
-  console.log('— links before:', links.length);
+  const linksAtStart = links.length;
 
   const filtered = links.filter(link => {
     if(link.url) {
@@ -108,7 +107,7 @@ const filterLinks = (params) => {
     return false;
   });
 
-  console.log('— links after:', filtered.length);
+  console.log(`— links: ${linksAtStart} -> ${filtered.length}`);
   return filtered;
 }
 
