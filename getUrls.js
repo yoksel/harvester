@@ -208,9 +208,6 @@ var searchLinks = (currentUrl) => {
 
           //Check path parts
           if(urlKeyParts.length > 1) {
-            console.log('urlKeyParts');
-            console.log(urlKeyParts);
-            console.log(currentUrl);
             const urlToCheck = currentUrl
               .split('/')
               .slice(0,-1)
@@ -260,9 +257,13 @@ var searchLinks = (currentUrl) => {
     // console.log('tree', tree);
     // console.log('\nVISITEDURLS\n', visitedUrls);
     })
-    .catch(e => {
-      console.log('Error in launching browser: ', e);
+    .catch(async err => {
+      console.log('Error in launching browser: ', err);
+
     });
 }
+
+console.log('Start from:', startUrl);
+console.log('Max:', max);
 
 searchLinks(startUrl);
