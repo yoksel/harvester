@@ -17,29 +17,8 @@ const getImageMarkup = (item) => {
 
 // Screenshots list
 const getScreens = (items) => {
-  const newItems = Object.assign({}, items);
-  delete newItems.data;
-
-  const childrensMarkupList = Object.keys(newItems)
-    .map(key => {
-      const item = newItems[key].data;
-      const childrenMarkup = getScreens(newItems[key]);
-
-      if(!item) {
-        return childrenMarkup;
-      }
-
-      let img = getImageMarkup(item);
-
-      return `${img} ${childrenMarkup}`;
-
-    });
-
-  if(childrensMarkupList.length > 0) {
-    return childrensMarkupList.join('\n');
-  }
-
-  return '';
+  const screens = items.map(item => getImageMarkup(item));
+  return screens.join('\n');
 }
 
 // Links list
@@ -78,38 +57,48 @@ const getChildrens = (items) => {
   return '';
 }
 
+const sortByUrl = (a, b) => {
+  const aUrl = a.url;
+  const bUrl = b.url;
+
+  if(aUrl > bUrl) {
+    return 1;
+  }
+  if(aUrl < bUrl) {
+    return -1;
+  }
+
+  return 0;
+}
+
 const keys = Object.keys(data);
 let output = '';
 
-const listMarkup = keys.map(key => {
-  const itemData = data[key];
-  const itemDef = itemData.data;
+if(showScreens) {
+  // Screens
+  const screensData = Object.values(data);
+  screensData.sort(sortByUrl);
+  output += getScreens(screensData);
+  document.body.classList.add('page--showScreens')
+}
+else {
+  // Links list
+  const listMarkup = keys.map(key => {
+    const itemData = data[key];
+    const itemDef = itemData.data;
 
-  let childrens = '';
+    let childrens = getChildrens(itemData);
 
-  if(showScreens) {
-    childrens = getScreens(itemData);
-    let img = getImageMarkup(itemDef);
+    if(itemDef) {
+      output += `<h3><a href="${itemDef.url}">${itemDef.title}</a></h3>`;
+    }
+    else {
+      output += `<h3>${key}</h3>`;
+    }
 
-    output += img;
     output += childrens;
+  });
 
-    document.body.classList.add('page--showScreens')
-
-    return;
-  }
-  else {
-    childrens = getChildrens(itemData);
-  }
-
-  if(itemDef) {
-    output += `<h3><a href="${itemDef.url}">${itemDef.title}</a></h3>`;
-  }
-  else {
-    output += `<h3>${key}</h3>`;
-  }
-
-  output += childrens;
-});
+}
 
 content.innerHTML = output;

@@ -112,7 +112,7 @@ const writeAllFiles = ({visitedUrls, collectedUrls, tree}) => {
 
   // Write visited links before searching next
   try {
-    writeScreensFile(tree);
+    writeScreensFile(visitedUrls);
   }
   catch(e) {
     console.log('Screens file was not written');
