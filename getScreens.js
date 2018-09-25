@@ -17,6 +17,7 @@ const {
   clearUrlProtocol,
   clearUrlDomain,
   clearText,
+  getNameFromUrl,
   makeLogin,
   writeFile,
   writeAllFiles,
@@ -46,8 +47,7 @@ const urls = require('./urls');
       const promises = [];
 
       const url = urls[i];
-      let name = clearUrlDomain(url)
-        .replace(/\//g,'_');
+      let name = getNameFromUrl(url);
       console.log(`\n${i}. URL: ${url}`);
 
       for (var k = screenSizes.length - 1; k >= 0; k--) {

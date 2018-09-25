@@ -22,6 +22,12 @@ const clearUrlDomain = (url) => {
   return result;
 };
 
+const getNameFromUrl = (url) => {
+  return url.replace(/\//g,'_')
+    .replace(/\?/g,'_')
+    .replace(/=/g,'_');
+};
+
 const clearText = (str) => {
   return str
     .replace(/[\n\t\r]/g,' ')
@@ -78,9 +84,9 @@ const writeScreensFile = (content) => {
   fs.readFile(indexSrcFile, 'utf8', function(error, markup){
     if(error) throw error;
     const dataStr = `<script type="text/javascript">
-const showLinks = false;
-const showScreens = true;
-const data = ${JSON.stringify(content, null, '\t')};
+  const showLinks = false;
+  const showScreens = true;
+  const data = ${JSON.stringify(content, null, '\t')};
 </script>`;
     markup = markup.replace('<!-- data -->', dataStr);
 
@@ -170,6 +176,7 @@ module.exports = {
   clearUrlProtocol,
   clearUrlDomain,
   clearText,
+  getNameFromUrl,
   makeLogin,
   writeFile,
   writeAllFiles,

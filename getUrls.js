@@ -8,7 +8,7 @@ const {
   makeScreens, // enable screeens 1000x1000
   startUrl,
   ignoreStrings,
-  ignoreMatches
+  findOnce
 } = require('./rules');
 
 const credits = require('./credits');
@@ -17,6 +17,7 @@ const {
   clearUrlProtocol,
   clearUrlDomain,
   clearText,
+  getNameFromUrl,
   makeLogin,
   writeFile,
   writeAllFiles,
@@ -32,7 +33,7 @@ const tree = {};
 
 let counter = 0;
 
-const findMatchOnce = ignoreMatches.map(item => {
+const findMatchOnce = findOnce.map(item => {
   return {
     expr: item,
     wasMet: false
@@ -175,12 +176,12 @@ var searchLinks = (currentUrl) => {
           }
 
           collectedUrls[urlKey].title = title;
-          collectedUrls[urlKey].name = urlKey.replace(/\//g,'_');
+          collectedUrls[urlKey].name = getNameFromUrl(urlKey);
 
           if(makeScreens) {
             const screenPath = `screens/${collectedUrls[urlKey].name}.png`;
 
-            await page.setViewport({ width: 1000, height: 1000 });
+            await page.setViewport({ width: 1100, height: 1000 });
             await page.screenshot({
               path: screenPath
             });
@@ -204,6 +205,23 @@ var searchLinks = (currentUrl) => {
           }, tree);
 
           pagePath.data = visitedUrls[urlKey];
+
+          //Check path parts
+          if(urlKeyParts.length > 1) {
+            console.log('urlKeyParts');
+            console.log(urlKeyParts);
+            console.log(currentUrl);
+            const urlToCheck = currentUrl
+              .split('/')
+              .slice(0,-1)
+              .join('/');
+
+            const middleUrlKey = clearUrlDomain(urlToCheck);
+
+            collectedUrls[middleUrlKey] = {
+              url: urlToCheck
+            };
+          }
 
           // console.log('Successful!');
           counter++;
