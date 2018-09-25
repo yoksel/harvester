@@ -1,7 +1,7 @@
 module.exports = {
-  // Max iterations for searchin links
   startUrl: 'http://livejournal.com',
   domainRestriction: 'livejournal.com/',
+  // Max iterations for searchin links
   max: 100,
   // Enable if you need screenshots
   makeScreens: true,
@@ -131,6 +131,7 @@ module.exports = {
     '[\\S]{2,20}.livejournal.com\\/\\d{4}\/\\d{2}',
     '[\\S]{2,20}.livejournal.com\\/friends',
     '[\\S]{2,20}.livejournal.com\\/friendsfriends',
+    '[\\S]{2,20}.livejournal.com\\/photo/album/d{2,10}',
 
     'livejournal.com\\/profile\\?userid=',
     'users\\.livejournal\\.com/[\\S]{2,20}/profile',
