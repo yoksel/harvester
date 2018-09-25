@@ -1,3 +1,7 @@
+HTML {
+  font-size: 16px;
+}
+
 BODY {
   font: 14px/1.4 Trebuchet MS, Arial, sans-serif;
 }
@@ -15,15 +19,41 @@ H1, H2, H3, H4 {
   margin-bottom: .5em;
 }
 
+OL {
+  margin: .3em;
+  margin-bottom: 1em;
+}
+
 .wrapper {
   max-width: 800px;
-  margin: 0 auto;
+  margin: 2rem auto;
+}
+.page--showScreens .wrapper {
+  max-width: 100%;
+  text-align: center;
 }
 
 .page-screen {
   max-width: 250px;
 }
 
-.pages-item A {
-  display: block;
+.nav {
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+.nav__separator {
+  margin: 1rem;
+}
+
+.pages-item SPAN {
+  text-decoration: none;
+  color: #AAA;
+}
+
+IMG {
+  line-height: 1;
+  margin: .5rem;
+  outline: 1px solid #DDD;
 }
