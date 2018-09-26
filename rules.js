@@ -23,6 +23,7 @@ module.exports = {
     'void(0)',
     'random.bml',
     'mailto:',
+    'SetupCab.cab',
 
     // Actions
     'logout',
