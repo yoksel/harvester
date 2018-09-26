@@ -1,8 +1,12 @@
 module.exports = {
   startUrl: 'http://livejournal.com',
+  // Check this string in every url
   domainRestriction: 'livejournal.com/',
+  // Finds all links on page
+  // Set another selector to get links from particular element
+  linksSelectorRestriction: 'a',
   // Max iterations for searchin links
-  max: 100,
+  max: 1000,
   // Enable if you need screenshots
   makeScreens: true,
   // if true, ignores height from screenSizes
@@ -24,6 +28,7 @@ module.exports = {
     'random.bml',
     'mailto:',
     'SetupCab.cab',
+    'data/rss',
 
     // Actions
     'logout',

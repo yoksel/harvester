@@ -6,6 +6,7 @@ const opn = require('opn');
 
 const {
   domainRestriction,
+  linksSelectorRestriction,
   max,
   makeScreens, // enable screeens 1000x1000
   startUrl,
@@ -114,6 +115,7 @@ const filterLinks = (params) => {
 // ------------------------------
 
 var searchLinks = (currentUrl) => {
+  let isGoToNext = true;
 
   console.log(`\n------------------------------`);
   console.log(`\n${counter}. Url: ${currentUrl}`);
@@ -135,7 +137,7 @@ var searchLinks = (currentUrl) => {
           await page.goto(currentUrl);
 
           // Get all links from page
-          let links = await page.$$eval('BODY a', anchors => {
+          let links = await page.$$eval(linksSelectorRestriction, anchors => {
             return anchors.map(anchor => {
               return {
                 url: anchor.href,
@@ -143,6 +145,11 @@ var searchLinks = (currentUrl) => {
               };
             });
           });
+
+          if(links.length === 0) {
+            throw new Error('No links');
+            return;
+          }
 
           // Filter link to get only service pages
           links = filterLinks({
@@ -227,35 +234,44 @@ var searchLinks = (currentUrl) => {
           }
 
           // console.log('Successful!');
+          trysCounter = 0;
           counter++;
         })
         .catch(async err => {
-          console.log('Error while opening page:', err);
+
+          if(err.message === 'No links') {
+            isGoToNext = false;
+            console.log(`\nError: no links for selector '${linksSelectorRestriction}' on page '${currentUrl}'`);
+            console.log('Check selector & url');
+
+            return;
+          }
+
+          console.log('\nError while opening page:', err);
 
           if(trysCounter < trysMax) {
-            console.log('Retry');
-            await browser.close();
+            console.log(`\n Try #${trysCounter}`);
 
             searchLinks(currentUrl);
             trysCounter++;
+            isGoToNext = false;
           }
           else {
+            console.log('\Max trys was reached');
             console.log('Go to the next link');
-            await browser.close();
 
             trysCounter = 0;
             const collectedKeys = Object.keys(collectedUrls);
             const urlKey = clearUrlDomain(currentUrl);
             delete collectedKeys[urlKey];
-
-            const next = collectedUrls[collectedKeys[0]];
-            searchLinks(next.url);
           }
-
-          return;
-        })
+        });
 
       await browser.close();
+
+      if(!isGoToNext) {
+        return;
+      }
 
       // Find next url
       const collectedKeys = Object.keys(collectedUrls);
@@ -293,6 +309,8 @@ var searchLinks = (currentUrl) => {
     .catch(async err => {
       console.log('Error in launching browser: ', err);
     });
+
+    return;
 }
 
 console.log('Start from:', startUrl);
