@@ -115,6 +115,7 @@ module.exports = {
     'shop\\/selfpromo\\/history\\?date',
     'shop\\/renameaccount.bml\\?dest_name=',
     'shop\\/journalpromo.bml\\?tab=',
+    'manage\\/payments\\/modify.bml\\?bill_when=',
 
     'inbox\\/?page=',
     'inbox\\/\\?[\\S]{2,20}&page=',

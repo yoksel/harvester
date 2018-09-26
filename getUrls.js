@@ -231,6 +231,10 @@ var searchLinks = (currentUrl) => {
             collectedUrls[middleUrlKey] = {
               url: urlToCheck
             };
+
+            collectedUrls[middleUrlKey + '.bml'] = {
+              url: urlToCheck + '.bml'
+            };
           }
 
           // console.log('Successful!');
@@ -240,7 +244,9 @@ var searchLinks = (currentUrl) => {
         .catch(async err => {
 
           if(err.message === 'No links') {
-            isGoToNext = false;
+            if(counter === 0) {
+              isGoToNext = false;
+            }
             console.log(`\nError: no links for selector '${linksSelectorRestriction}' on page '${currentUrl}'`);
             console.log('Check selector & url');
 
