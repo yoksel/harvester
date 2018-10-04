@@ -15,6 +15,7 @@ const {
 } = require('./rules');
 
 const credits = require('./credits');
+const env = 'dev';
 
 const {
   clearUrlProtocol,
@@ -127,8 +128,8 @@ var searchLinks = (currentUrl) => {
       const page = await browser.newPage();
 
       // Login
-      if(credits && credits.loginUrl) {
-        await makeLogin(page, credits);
+      if(credits && credits.env[env].loginUrl) {
+        await makeLogin(page, credits, env);
       }
 
       await browser.newPage()
