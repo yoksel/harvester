@@ -180,5 +180,6 @@ module.exports = {
   writeVisitedFile,
   writeCollectedFile,
   writeTreeFile,
-  writeIndexFile
+  writeIndexFile,
+  writeScreensFile
 };
