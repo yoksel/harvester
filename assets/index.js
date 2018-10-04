@@ -6,13 +6,24 @@ const getImageMarkup = (item) => {
     return '';
   }
 
-  let img = `<img class="page-screen"
-    src="${item.screenPath}"
+  let screens = item.screenPath;
+
+  if(!Array.isArray(screens)) {
+    screens = [screens];
+  }
+
+  const results = screens.map(screen => {
+    console.log('screen', screen);
+    let img = `<img class="page-screen"
+    src="${screen}"
     alt="${item.title}"
     title="${item.title}"/>`;
-  img = `<a href="${item.url}">${img}</a>`;
+    img = `<a href="${item.url}">${img}</a>`;
 
-  return img;
+    return img;
+  });
+
+  return results.join('\n');
 }
 
 // Screenshots list
