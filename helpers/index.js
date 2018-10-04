@@ -148,27 +148,21 @@ const writeAllFiles = ({visitedUrls, collectedUrls, tree}) => {
   }
 };
 
-const makeLogin = async (page, credits) => {
+const makeLogin = async (page, credits, currentEnv) => {
   const {
-    loginUrl,
-
-    username_selector,
-    password_selector,
-    submit_selector,
-
-    username,
-    password
+    selectors,
+    env
   } = credits;
 
-  await page.goto(loginUrl);
+  await page.goto(env[currentEnv].loginUrl);
 
-  await page.click(username_selector);
-  await page.keyboard.type(username);
+  await page.click(selectors.username);
+  await page.keyboard.type(env[currentEnv].username);
 
-  await page.click(password_selector);
-  await page.keyboard.type(password);
+  await page.click(selectors.password);
+  await page.keyboard.type(env[currentEnv].password);
 
-  await page.click(submit_selector);
+  await page.click(selectors.submit);
 
   await page.waitForNavigation();
 
