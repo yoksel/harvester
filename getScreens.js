@@ -12,6 +12,8 @@ const {
 } = require('./rules');
 
 const credits = require('./credits');
+const env = 'dev';
+let visitedUrls = {};
 
 const {
   clearUrlProtocol,
@@ -24,7 +26,8 @@ const {
   writeVisitedFile,
   writeCollectedFile,
   writeTreeFile,
-  writeIndexFile
+  writeIndexFile,
+  writeScreensFile
 } = require('./helpers');
 
 // Links list to get screens
@@ -39,8 +42,8 @@ const urls = require('./urls');
     const fullPage = screenFullPage || false;
 
     // Login
-    if(credits && credits.loginUrl) {
-      await makeLogin(page, credits);
+    if(credits && credits.env[env].loginUrl) {
+      await makeLogin(page, credits, env);
     }
 
     for (let i = 0; i < urls.length; i++) {
@@ -48,9 +51,10 @@ const urls = require('./urls');
 
       const url = urls[i];
       let name = getNameFromUrl(url);
+      const urlKey = clearUrlDomain(url);
       console.log(`\n${i}. URL: ${url}`);
 
-      for (var k = screenSizes.length - 1; k >= 0; k--) {
+      for (var k = 0; k < screenSizes.length; k++) {
         const width = screenSizes[k].width;
         const height = screenSizes[k].height;
 
@@ -60,11 +64,19 @@ const urls = require('./urls');
           .then(async page => {
             await page.setViewport({ width: width, height: height });
             await page.goto(url);
+            const screenPath = `screens/${name}--${width}x${height}.png`;
 
             await page.screenshot({
-              path: `screens/${name}--${width}x${height}.png`,
+              path: screenPath,
               fullPage: screenFullPage || false
             });
+
+            visitedUrls[urlKey] = {};
+            visitedUrls[urlKey].screenPath = screenPath;
+
+            if(i === urls.length - 1 && k === screenSizes.length) {
+              writeScreensFile(visitedUrls);
+            }
           }))
       }
 
