@@ -3,13 +3,10 @@
 const puppeteer = require('puppeteer');
 
 const {
-  max,
   screenFullPage,
   screenSizes,
-  startUrl,
-  ignoreStrings,
-  ignoreMatches
-} = require('./rules');
+  urls
+} = require('./rules-screens');
 
 const credits = require('./credits');
 const env = 'dev';
@@ -29,9 +26,6 @@ const {
   writeIndexFile,
   writeScreensFile
 } = require('./helpers');
-
-// Links list to get screens
-const urls = require('./urls');
 
 (async () => {
   const browser = puppeteer
