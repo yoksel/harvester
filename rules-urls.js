@@ -12,16 +12,6 @@ module.exports = {
   // if true, ignores height from screenSizes
   screenFullPage: false,
   // Enable makeScreens to use screenSizes
-  screenSizes: [
-    {
-      width: 320,
-      height: 1000
-    },
-    {
-      width: 1280,
-      height: 1000
-    },
-  ],
   ignoreStrings: [
     '#',
     'void(0)',

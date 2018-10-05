@@ -12,10 +12,10 @@ const {
   startUrl,
   ignoreStrings,
   findOnce
-} = require('./rules');
+} = require('./rules-urls');
 
 const credits = require('./credits');
-const env = 'dev';
+const env = 'prod';
 
 const {
   clearUrlProtocol,
