@@ -35,6 +35,16 @@ const {
       const page = await browser.newPage();
       const fullPage = screenFullPage || false;
 
+      if(credits.beforeStart) {
+        await page.goto(credits.beforeStart.url);
+
+        await credits.beforeStart.clickSelectors.forEach(async (item) => {
+          await page.click(item);
+        });
+
+        await page.waitForNavigation();
+      }
+
       // Login
       if(credits && credits.env[env].loginUrl) {
         console.log('Has credentials, try to login');
@@ -75,7 +85,22 @@ const {
 
               // Wait for loading
               await page.waitFor(10000);
-              // await page.waitFor(() => !!document.querySelector('.ljsale[lj-sale-init*="adfox_native_footer"]'));
+
+              if(credits.selectors.closeBanner) {
+                let banner = await page.$eval(credits.selectors.closeBanner, bannerElemClose => {
+                  if(bannerElemClose) {
+                    bannerElemClose.click();
+                    return true;
+                  }
+                  return false;
+                })
+                  .then(async bannerElemClose => {
+                    if(bannerElemClose) {
+                      await page.waitFor(2000);
+                    }
+                  })
+                  .catch(err => {});
+              }
 
               await page.screenshot({
                 path: screenPath,
