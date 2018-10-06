@@ -123,7 +123,12 @@ const {
         await Promise.all(promises)
           .then(result => {})
           .catch(err => {
-            console.log('Error while loading pages: ',err);
+            if(err.name === 'TimeoutError') {
+              console.log(`${err.name} while loading pages: ${err.message}`);
+            }
+            else {
+              console.log('Error while loading pages: ',err);
+            }
           });
 
         writeScreensFile(visitedUrls);
