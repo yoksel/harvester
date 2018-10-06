@@ -1,0 +1,16 @@
+<section class="tasks-group">
+  <h2 class="tasks-group__title">{{listTitle}}</h2>
+
+  <ol class="tasks-group__list">
+    {{#tasks}}
+      <li class="tasks-group__item">
+        <a
+          data-listId="{{listId}}"
+          data-taskId="{{id}}"
+          class="task"
+          href="/task/{{id}}"
+        >{{name}}</a>
+      </li>
+    {{/tasks}}
+  </ol>
+</section>

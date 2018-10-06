@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>🚜 Harvester</title>
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body class="page">
+    <div class="wrapper">
+      <h1>🚜 Harvester</h1>
+
+      <div class="container">
+        <div class="aside">
+          {{{discovery}}}
+
+          {{{adaptivity}}}
+        </div>
+
+        <main class="main">
+          <div class="status">
+              Status: <span class="status__text"></span>
+          </div>
+          <div class="content"></div>
+        </main>
+      </div>
+    </div>
+
+    <!-- data -->
+
+    <script type="text/javascript" src="assets/socket.js"></script>
+    <script type="text/javascript">
+      const tasks = document.querySelectorAll('.task');
+
+      tasks.forEach(task => {
+        task.addEventListener('click', event => {
+          event.preventDefault();
+
+          console.dir(task);
+
+          const taskId = task.dataset.taskid;
+          const listId = task.dataset.listid;
+
+          console.log(listId, taskId);
+          const data = {listId, taskId};
+          const dataStr = JSON.stringify(data);
+          ws.send(dataStr);
+        })
+      });
+    </script>
+  </body>
+</html>
