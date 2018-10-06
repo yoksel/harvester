@@ -13,14 +13,21 @@ const getImageMarkup = (item) => {
   }
 
   const results = screens.map(screen => {
-    console.log('screen', screen);
-    let img = `<img class="page-screen"
-    src="${screen}"
-    alt="${item.title}"
-    title="${item.title}"/>`;
-    img = `<a href="${item.url}">${img}</a>`;
+    const img = `<img
+      class="page-screen__img"
+      src="${screen}"
+      alt="${item.title}"
+      title="${item.title}"/>`;
+    let content = `${img}`;
+    content += `<a
+      class="page-screen__link page-screen__link--url"
+      href="${item.url}">Link</a>`;
+    content += `<a
+      class="page-screen__link page-screen__link--img"
+      href="${screen}">Img</a>`;
+    content = `<div class="page-screen">${content}</div>`;
 
-    return img;
+    return content;
   });
 
   return results.join('\n');
