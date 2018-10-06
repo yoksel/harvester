@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node getUrls.js",
-    "screens": "node getScreens.js"
+    "start": "node lib/getUrls.js",
+    "screens": "node lib/getScreens.js"
   },
   "author": "",
   "license": "ISC",
