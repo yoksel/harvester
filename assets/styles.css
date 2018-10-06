@@ -47,13 +47,22 @@ OL {
   margin: 1rem;
 }
 
+.page--screens .nav {
+  display: none;
+}
+
+.page--screens .page-screen {
+  max-width: 400px;
+}
+
 .pages-item SPAN {
   text-decoration: none;
   color: #AAA;
 }
 
 IMG {
-  line-height: 1;
   margin: .5rem;
+  vertical-align: top;
+  line-height: 1;
   outline: 1px solid #DDD;
 }

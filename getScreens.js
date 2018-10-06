@@ -131,7 +131,7 @@ const {
             }
           });
 
-        writeScreensFile(visitedUrls);
+        writeScreensFile(visitedUrls, 'screens');
       }
 
       await browser.close()

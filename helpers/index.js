@@ -61,6 +61,7 @@ const writeTreeFile = (content) => {
 const writeIndexFile = (content) => {
   const indexSrcFile = 'assets/index-src.html';
   const indexFile = 'index.html';
+  const mod = 'urls';
 
   // Read markup from source
   fs.readFile(indexSrcFile, 'utf8', function(error, markup){
@@ -70,7 +71,9 @@ const showLinks = true;
 const showScreens = false;
 const data = ${JSON.stringify(content, null, '\t')};
 </script>`;
-    markup = markup.replace('<!-- data -->', dataStr);
+    markup = markup
+      .replace('{{data}}', dataStr)
+      .replace('{{mod}}', mod);
 
     // Write markup to destination
     fs.writeFile(indexFile, markup, function(error){
@@ -80,9 +83,15 @@ const data = ${JSON.stringify(content, null, '\t')};
   });
 };
 
-const writeScreensFile = (content) => {
+const writeScreensFile = (content, task = 'urls') => {
   const indexSrcFile = 'assets/index-src.html';
-  const indexFile = 'screens.html';
+  let indexFile = 'urls-screens.html';
+  let mod = 'usrls-screens';
+
+  if(task === 'screens') {
+    indexFile = 'screens.html';
+    mod = 'screens';
+  }
 
   // Read markup from source
   fs.readFile(indexSrcFile, 'utf8', function(error, markup){
@@ -92,7 +101,9 @@ const writeScreensFile = (content) => {
   const showScreens = true;
   const data = ${JSON.stringify(content, null, '\t')};
 </script>`;
-    markup = markup.replace('<!-- data -->', dataStr);
+    markup = markup
+      .replace('{{data}}', dataStr)
+      .replace('{{mod}}', mod);
 
     // Write markup to destination
     fs.writeFile(indexFile, markup, function(error){
