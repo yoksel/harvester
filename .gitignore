@@ -7,7 +7,7 @@ tree.json
 visited.json
 collected.json
 
-screens/*.png
+public/screens/*.png
 
 index.html
 screens.html
