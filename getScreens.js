@@ -82,6 +82,7 @@ const {
 
               await page.setViewport({ width: width, height: height });
               await page.goto(url);
+              const title = await page.title();
 
               // Wait for loading
               await page.waitFor(10000);
@@ -114,7 +115,7 @@ const {
               }
 
               visitedUrls[urlKey].screenPath.push(screenPath);
-              visitedUrls[urlKey].title = url;
+              visitedUrls[urlKey].title = title;
               visitedUrls[urlKey].url = url;
             }))
         }
