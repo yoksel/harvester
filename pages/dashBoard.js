@@ -1,11 +1,9 @@
 const fs = require('fs');
 const mustache = require('mustache');
 
-const tasks = require('../tasks/');
-const test = require('../test');
-
 const getScreens = require('../lib/getScreens');
 const {loadTemplates} = require('../lib/helpers');
+const tasks = require('../tasks/');
 
 const templatesNames = [
   'dashBoard',
@@ -27,17 +25,14 @@ ws = new WebSocketServer({port: 8080});
 ws.on('connection', function (ws) {
 
   ws.on('message', function (message) {
-    // console.log('received:');
-    // console.log(message);
     const {listId, taskId} = JSON.parse(message);
-    // console.log(listId, taskId);
-    const task = tasks[listId].tasks
-      .filter(task => task.id === taskId)[0];
+    console.log(listId, taskId);
 
     if(listId === 'adaptivity') {
       getScreens({
         ws,
-        task
+        listId,
+        taskId
       });
     }
   });
