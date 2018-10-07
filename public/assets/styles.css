@@ -47,6 +47,32 @@ OL {
   padding: 1rem;
 }
 
+.tasks-group__list {
+  padding-left: 1em;
+}
+
+.status {
+  position: relative;
+  margin-bottom: 1em;
+}
+.status__name {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  bottom: 1px;
+  padding: .5em;
+  background: #EEE;
+  line-height: 1;
+  color: #AAA;
+}
+.status__text {
+  padding: .5em;
+  border: 1px solid #DDD;
+  border-radius: 5px;
+  background: #EEE;
+  line-height: 1;
+}
+
 .page-screen {
   display: inline-block;
   position: relative;
