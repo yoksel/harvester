@@ -33,17 +33,18 @@ OL {
 
 .container {
   display: flex;
+  border-top: 1px solid #DDD;
 }
 
 .main {
   padding: 1rem;
+  flex-grow: 1;
 }
 
 .aside {
   flex-basis: 200px;
   flex-shrink: 0;
   border-right: 1px solid #DDD;
-  margin-right: 1em;
   padding: 1rem;
 }
 
