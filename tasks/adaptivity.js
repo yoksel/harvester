@@ -1,11 +1,11 @@
 const baseScreenSizes = [
   {
     width: 320,
-    height: 1000
+    height: 600
   },
   {
     width: 760,
-    height: 1000
+    height: 800
   },
   {
     width: 1280,
@@ -13,9 +13,11 @@ const baseScreenSizes = [
   },
   {
     width: 1440,
-    height: 1000
+    height: 1200
   },
 ];
+
+const screenFullPage = false;
 
 const listId = 'adaptivity';
 const listTitle = 'Adaptivity';
@@ -24,7 +26,7 @@ const tasks = [
   {
     id: 'some-pages',
     name: 'Some pages',
-    env: 'prod',
+    creditsEnv: 'prod',
     urls: [
       "https://livejournal.com",
       "https://livejournal.com/shop",
@@ -36,7 +38,7 @@ const tasks = [
   {
     id: 'some-pages-sizes',
     name: 'Some pages with sizes',
-    env: 'prod',
+    creditsEnv: 'prod',
     urls: [
       "https://livejournal.com",
       "https://livejournal.com/shop",
@@ -46,8 +48,8 @@ const tasks = [
     ],
     screenSizes: [
       {
-        width: 320,
-        height: 1000
+        width: 600,
+        height: 400
       },
       {
         width: 1440,
@@ -61,5 +63,7 @@ const tasks = [
 module.exports = {
   listId,
   listTitle,
-  tasks
+  baseScreenSizes,
+  screenFullPage,
+  tasks,
 };
