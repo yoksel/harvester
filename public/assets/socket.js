@@ -13,6 +13,11 @@ ws.onclose = function(event) {
     console.log('Обрыв соединения'); // например, "убит" процесс сервера
   }
   console.log('Код: ' + event.code + ' причина: ' + event.reason);
+
+  if(event.code === 1006) {
+    const message = 'Server was stopped. Futher requests will not be processed.\n\n';
+    statusTextElem.value = message + statusTextElem.value;
+  }
 };
 
 ws.onmessage = function(event) {
@@ -20,10 +25,16 @@ ws.onmessage = function(event) {
 
   const data = JSON.parse(event.data);
 
-  statusTextElem.innerHTML = data.message;
+  const message = `Task: ${data.task}\n${data.message}\n----------\n`;
+
+  statusTextElem.value = message + statusTextElem.value;
+
+  statusTextElem.dataset.status = data.status;
 
   if(data.status && data.status == 'success') {
-    targetElem.innerHTML = data.data;
+    if(data.data) {
+      targetElem.innerHTML = data.data
+    }
   }
   else {
     console.log(event.data);
