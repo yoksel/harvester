@@ -59,19 +59,40 @@ OL {
 .status__name {
   position: absolute;
   top: 1px;
-  right: 1px;
+  right: 1.2em;
   bottom: 1px;
+  display: flex;
   padding: .5em;
-  background: #EEE;
+  pointer-events: none;
   line-height: 1;
-  color: #AAA;
+  color: rgba(0,0,0,.5);
 }
 .status__text {
+  width: 100%;
+  min-height: 124px;
   padding: .5em;
+  padding-right: 4em;
+  box-sizing: border-box;
+  resize: vertical;
   border: 1px solid #DDD;
   border-radius: 5px;
   background: #EEE;
   line-height: 1;
+  font: inherit;
+}
+
+.status__text[data-status="success"] {
+  border-color: hsl(80, 70%, 60%)
+  background: hsl(80, 80%, 80%);
+}
+
+.status__text[data-status="in-progress"] {
+  border-color: hsl(60, 90%, 60%)
+  background: hsl(60, 80%, 80%);
+}
+.status__text[data-status="error"] {
+  border-color: hsl(350, 70%, 60%);
+  background: hsl(0, 80%, 90%);
 }
 
 .page-screen {
