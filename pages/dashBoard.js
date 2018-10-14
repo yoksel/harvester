@@ -10,6 +10,8 @@ const templatesNames = [
   'tasksList'
 ];
 
+// ------------------------------
+
 let templates = {};
 const templatesPromise = loadTemplates(templatesNames)
   .then(result => {
@@ -19,6 +21,8 @@ const templatesPromise = loadTemplates(templatesNames)
     console.log('Error while loading templates: ', error);
   });
 
+// ------------------------------
+
 const WebSocketServer = require('ws').Server,
 ws = new WebSocketServer({port: 8080});
 
@@ -26,7 +30,7 @@ ws.on('connection', function (ws) {
 
   ws.on('message', function (message) {
     const {listId, taskId} = JSON.parse(message);
-    console.log(listId, taskId);
+    console.log('RUN:', listId, taskId);
 
     if(listId === 'adaptivity') {
       getScreens({
@@ -41,6 +45,8 @@ ws.on('connection', function (ws) {
     console.log('соединение закрыто');
   });
 });
+
+// ------------------------------
 
 const dashboardPage = async (req, res) => {
   await templatesPromise;
