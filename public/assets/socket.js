@@ -25,7 +25,7 @@ ws.onmessage = function(event) {
 
   const data = JSON.parse(event.data);
 
-  const message = `Task: ${data.task}\n${data.message}\n----------\n`;
+  const message = `⬇️ Task: ${data.task}\n${data.message}\n⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼\n`;
 
   statusTextElem.value = message + statusTextElem.value;
 
