@@ -74,25 +74,28 @@ OL {
   padding-right: 4em;
   box-sizing: border-box;
   resize: vertical;
-  border: 1px solid #DDD;
+  border: 1px solid rgba(0,0,0,.15);
   border-radius: 5px;
   background: #EEE;
   line-height: 1;
   font: inherit;
+  transition: background 1s;
 }
 
-.status__text[data-status="success"] {
-  border-color: hsl(80, 70%, 60%)
-  background: hsl(80, 80%, 80%);
+.status__text[data-status="error"] {
+  background: hsl(0, 80%, 90%);
+}
+
+.status__text[data-status="start"] {
+  background: hsl(30, 80%, 80%);
 }
 
 .status__text[data-status="in-progress"] {
-  border-color: hsl(60, 90%, 60%)
   background: hsl(60, 80%, 80%);
 }
-.status__text[data-status="error"] {
-  border-color: hsl(350, 70%, 60%);
-  background: hsl(0, 80%, 90%);
+
+.status__text[data-status="success"] {
+  background: hsl(80, 80%, 80%);
 }
 
 .page-screen {
