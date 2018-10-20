@@ -20,8 +20,9 @@ ws.onclose = function(event) {
   }
 
   if(event.code === 1006) {
-    const message = 'Server was stopped. Futher requests will not be processed.\n\n';
+    const message = '*** Server was stopped. Futher requests will not be processed. ***\n\n';
     statusTextElem.value = message + statusTextElem.value;
+    statusTextElem.dataset.status = '';
   }
 };
 
@@ -29,7 +30,9 @@ ws.onclose = function(event) {
 ws.onmessage = function(event) {
   const data = JSON.parse(event.data);
 
-  const message = `⬇️ Task: ${data.task}\n${data.message}\n⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼\n`;
+  const message = `⬇️ Task: ${data.task}
+      ${data.message}
+      ⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼\n`;
 
   statusTextElem.value = message + statusTextElem.value;
 
