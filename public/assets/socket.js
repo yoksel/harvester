@@ -3,7 +3,7 @@ const targetElem = document.querySelector('.content');
 const statusTextElem = document.querySelector('.status__text');
 
 ws.onopen = function() {
-  console.log("Соединение установлено.");
+  console.log("Соединение установлено");
 };
 
 ws.onclose = function(event) {
@@ -12,7 +12,12 @@ ws.onclose = function(event) {
   } else {
     console.log('Обрыв соединения'); // например, "убит" процесс сервера
   }
-  console.log('Код: ' + event.code + ' причина: ' + event.reason);
+
+  console.log(`Код: ${event.code}`);
+
+  if(event.reason) {
+    console.log(`причина: ${event.reason}`);
+  }
 
   if(event.code === 1006) {
     const message = 'Server was stopped. Futher requests will not be processed.\n\n';
@@ -20,9 +25,8 @@ ws.onclose = function(event) {
   }
 };
 
+// Получены данные
 ws.onmessage = function(event) {
-  console.log("Получены данные ");
-
   const data = JSON.parse(event.data);
 
   const message = `⬇️ Task: ${data.task}\n${data.message}\n⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼\n`;
@@ -37,7 +41,7 @@ ws.onmessage = function(event) {
     }
   }
   else {
-    console.log(event.data);
+    // console.log(event.data);
   }
 };
 
