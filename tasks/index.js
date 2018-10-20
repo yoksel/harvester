@@ -1,7 +1,7 @@
 const discovery = require('./discovery');
-const adaptivity = require('./adaptivity');
+const screens = require('./screens');
 
 module.exports = {
   discovery,
-  adaptivity
+  screens,
 };

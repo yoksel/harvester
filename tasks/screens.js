@@ -19,7 +19,7 @@ const baseScreenSizes = [
 
 const screenFullPage = false;
 
-const listId = 'adaptivity';
+const listId = 'screens';
 const listTitle = 'Adaptivity';
 
 const tasks = [
