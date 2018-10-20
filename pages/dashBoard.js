@@ -1,7 +1,7 @@
 const fs = require('fs');
 const mustache = require('mustache');
 
-const getScreens = require('../lib/getScreens');
+const handleTask = require('../lib/handleTask');
 const {loadTemplates} = require('../lib/helpers');
 const tasks = require('../tasks/');
 
@@ -32,13 +32,11 @@ ws.on('connection', function (ws) {
     const {listId, taskId} = JSON.parse(message);
     console.log('RUN:', listId, taskId);
 
-    if(listId === 'adaptivity') {
-      getScreens({
-        ws,
-        listId,
-        taskId
-      });
-    }
+    handleTask({
+      ws,
+      listId,
+      taskId
+    });
   });
 
   ws.on('close', function() {
