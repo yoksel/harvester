@@ -50,14 +50,15 @@ const dashboardPage = async (req, res) => {
   await templatesPromise;
 
   const tasksGroups = Object.keys(tasks)
-    .reduce((prev, key) => {
-      prev[key] = mustache.render(templates.tasksList, tasks[key]);
-      return prev;
-    }, {});
+    .map(key => {
+      return mustache.render(templates.tasksList, tasks[key]);
+    });
 
-  const renderedPage = mustache.render(templates.dashBoard, tasksGroups);
+  const renderedPage = mustache.render(templates.dashBoard, {tasksGroups});
 
   res.send(renderedPage);
 }
+
+// ------------------------------
 
 module.exports = dashboardPage;

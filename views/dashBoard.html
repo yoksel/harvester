@@ -10,25 +10,23 @@
 
       <div class="container">
         <div class="aside">
-          {{{discovery}}}
-
-          {{{adaptivity}}}
+          {{#tasksGroups}}
+            {{{.}}}
+          {{/tasksGroups}}
         </div>
 
         <main class="main">
           <div class="status">
-              <div class="status__name">Status</div>
-              <textarea
-                class="status__text"
-                placeholder="..."
-                ></textarea>
+            <div class="status__name">Status</div>
+            <textarea
+              class="status__text"
+              placeholder="..."
+              ></textarea>
           </div>
           <div class="content"></div>
         </main>
       </div>
     </div>
-
-    <!-- data -->
 
     <script type="text/javascript" src="assets/socket.js"></script>
     <script type="text/javascript">
@@ -38,12 +36,9 @@
         task.addEventListener('click', event => {
           event.preventDefault();
 
-          console.dir(task);
-
           const taskId = task.dataset.taskid;
           const listId = task.dataset.listid;
 
-          console.log(listId, taskId);
           const data = {listId, taskId};
           const dataStr = JSON.stringify(data);
           ws.send(dataStr);
