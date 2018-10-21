@@ -172,6 +172,10 @@ OL {
   max-width: 400px;
 }
 
+.pages-list {
+  padding-left: 20px;
+}
+
 .pages-item SPAN {
   text-decoration: none;
   color: #AAA;
