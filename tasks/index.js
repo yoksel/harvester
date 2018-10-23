@@ -1,7 +1,9 @@
-const discovery = require('./discovery');
+const urls = require('./urls');
 const screens = require('./screens');
+const snippets = require('./snippets');
 
 module.exports = {
-  discovery,
+  urls,
   screens,
+  snippets
 };
