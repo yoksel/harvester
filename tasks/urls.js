@@ -150,7 +150,7 @@ const tasks = [
     creditsEnv: 'prod',
     startUrl: 'https://livejournal.com',
     domainRestriction: 'livejournal.com',
-    linksSelectorRestriction: '.b-service a',
+    linksSelectorRestriction: 'a',
     max: 200,
     makeScreens: true,
     screenFullPage: false,

@@ -35,6 +35,7 @@ const tasks = [
       "https://yokcel.livejournal.com/friends"
     ]
   },
+
   {
     id: 'some-pages-sizes',
     name: 'Some pages with sizes',
