@@ -5,14 +5,21 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node lib/getUrls.js",
-    "screens": "node lib/getScreens.js"
+    "start": "node app.js",
+    "screens": "node lib/getScreens.js",
+    "js:lint": "eslint '**/*.js'",
+    "js:fix": "eslint '**/*.js' --fix"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel-eslint": "^10.0.1",
     "body-parser": "^1.18.3",
     "del": "^3.0.0",
+    "eslint": "^5.9.0",
+    "eslint-config-yandex": "^1.0.6",
+    "eslint-plugin-babel": "^5.1.0",
+    "eslint-plugin-react": "^7.11.1",
     "express": "^4.16.3",
     "mustache": "^3.0.0",
     "node-static": "^0.7.11",
