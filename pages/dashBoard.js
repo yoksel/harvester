@@ -23,8 +23,10 @@ const templatesPromise = loadTemplates(templatesNames)
 
 // ------------------------------
 
-const WebSocketServer = require('ws').Server,
-ws = new WebSocketServer({port: 8080});
+const WebSocketServer = require('ws').Server;
+
+
+const ws = new WebSocketServer({port: 8080});
 
 ws.on('connection', function (ws) {
 
@@ -39,7 +41,7 @@ ws.on('connection', function (ws) {
     });
   });
 
-  ws.on('close', function() {
+  ws.on('close', function () {
     console.log('соединение закрыто');
   });
 });
@@ -57,7 +59,7 @@ const dashboardPage = async (req, res) => {
   const renderedPage = mustache.render(templates.dashBoard, {tasksGroups});
 
   res.send(renderedPage);
-}
+};
 
 // ------------------------------
 
