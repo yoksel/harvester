@@ -13,3 +13,7 @@ index.html
 screens.html
 
 tasks/snippets.js
+tasks/urls.js
+
+data/*.json
+data/**/*.*
