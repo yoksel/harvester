@@ -11,3 +11,5 @@ public/screens/*.png
 
 index.html
 screens.html
+
+tasks/snippets.js
