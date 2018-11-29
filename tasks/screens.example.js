@@ -39,7 +39,7 @@ const tasks = [
     urls: [
       'https://mysite.com',
       'https://mysite.com/about'
-    ]
+    ],
     screenSizes: [
       {
         width: 600,

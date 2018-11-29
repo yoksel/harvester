@@ -38,7 +38,7 @@ ws.onmessage = function (event) {
 
   statusTextElem.dataset.status = data.status;
 
-  if (data.status && data.status == 'success') {
+  if (data.status && data.status === 'success') {
     if (data.data) {
       targetElem.innerHTML = data.data;
     }

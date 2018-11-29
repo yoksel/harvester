@@ -25,10 +25,9 @@ const templatesPromise = loadTemplates(templatesNames)
 
 const WebSocketServer = require('ws').Server;
 
+const webSocket = new WebSocketServer({port: 8080});
 
-const ws = new WebSocketServer({port: 8080});
-
-ws.on('connection', function (ws) {
+webSocket.on('connection', function (ws) {
 
   ws.on('message', function (message) {
     const {listId, taskId} = JSON.parse(message);

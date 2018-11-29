@@ -1,4 +1,4 @@
-const content = document.querySelector('.content');
+const contentElem = document.querySelector('.content');
 
 // Single image wrapped with link
 const getImageMarkup = (item) => {
@@ -117,4 +117,4 @@ if (showScreens) {
 
 }
 
-content.innerHTML = output;
+contentElem.innerHTML = output;
