@@ -28,25 +28,18 @@ const tasks = [
     name: 'Some pages',
     creditsEnv: 'prod',
     urls: [
-      "https://livejournal.com",
-      "https://livejournal.com/shop",
-      "https://yokcel.livejournal.com/",
-      "https://yokcel.livejournal.com/profile",
-      "https://yokcel.livejournal.com/friends"
+      'https://mysite.com',
+      'https://mysite.com/about'
     ]
   },
-
   {
     id: 'some-pages-sizes',
     name: 'Some pages with sizes',
     creditsEnv: 'prod',
     urls: [
-      "https://livejournal.com",
-      "https://livejournal.com/shop",
-      "https://yokcel.livejournal.com/",
-      "https://yokcel.livejournal.com/profile",
-      "https://yokcel.livejournal.com/friends"
-    ],
+      'https://mysite.com',
+      'https://mysite.com/about'
+    ]
     screenSizes: [
       {
         width: 600,
@@ -57,9 +50,8 @@ const tasks = [
         height: 1000
       },
     ]
-  }
+  },
 ];
-
 
 module.exports = {
   listId,
