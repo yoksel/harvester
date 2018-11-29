@@ -1,0 +1,15 @@
+<ol class="pages-list">
+  {{#items}}
+  <li>
+    <h3><a href="{{articleUrl}}">{{articleName}}</a></h3>
+
+    <ol>
+    {{#links}}
+      <li>
+        <a href="{{{.}}}">{{{.}}}</a>
+      </li>
+    {{/links}}
+    </ol>
+  </li>
+  {{/items}}
+</ol>
