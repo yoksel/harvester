@@ -1,5 +1,8 @@
 <li class="pages-item">
-  <h4><a href="{{data.url}}">{{data.title}}</a> <span>{{data.pathname}}</span></h4>
+  <h4>
+    <a href="{{data.url}}">{{data.title}}</a> <span>{{data.pathname}}</span>
+    <span class="pages-item__screen" style="background-image: url({{data.screenPath}});"></span>
+  </h4>
 
   <ol class="pages-list">
     {{#items}}
