@@ -48,6 +48,42 @@ OL {
   padding: 1rem;
 }
 
+.title-wrapper {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.title {
+  margin-bottom: 0;
+  min-height: 20px;
+}
+.title__group-name {
+  font-size: 16px;
+  color: #555;
+}
+.title__group-name:not(:empty)::after {
+  content: " /";
+}
+
+.task-stopper {
+  margin-left: 20;
+  border: 2px solid;
+  border-radius: 5px;
+  font: inherit;
+  color: #999;
+  cursor: pointer;
+}
+
+.task-stopper:disabled {
+  opacity: .25;
+  cursor: not-allowed;
+}
+.task-stopper:active {
+  color: orangered;
+}
+
 .tasks-group__list {
   padding-left: 1em;
 }

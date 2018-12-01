@@ -2,7 +2,10 @@ const fs = require('fs');
 const mustache = require('mustache');
 
 const handleTask = require('../lib/handleTask');
-const {loadTemplates} = require('../lib/helpers');
+const {
+  eventEmitter,
+  loadTemplates
+} = require('../lib/helpers');
 const tasks = require('../tasks/');
 
 const templatesNames = [
@@ -30,9 +33,18 @@ const webSocket = new WebSocketServer({port: 8080});
 webSocket.on('connection', function (ws) {
 
   ws.on('message', function (message) {
-    const {listId, taskId} = JSON.parse(message);
-    console.log('RUN:', listId, taskId);
+    const {
+      listId,
+      taskId,
+      action
+    } = JSON.parse(message);
 
+    if(action) {
+      eventEmitter.emit(action);
+      return;
+    }
+
+    console.log('RUN:', listId, taskId);
     handleTask({
       ws,
       listId,
