@@ -3,20 +3,20 @@ const targetElem = document.querySelector('.content');
 const statusTextElem = document.querySelector('.status__text');
 
 ws.onopen = function () {
-  console.log('Соединение установлено');
+  console.log('Connection established');
 };
 
 ws.onclose = function (event) {
   if (event.wasClean) {
-    console.log('Соединение закрыто чисто');
+    console.log('Connection was closed correctly');
   } else {
-    console.log('Обрыв соединения'); // например, "убит" процесс сервера
+    console.log('Connection lost'); // например, "убит" процесс сервера
   }
 
-  console.log(`Код: ${event.code}`);
+  console.log(`Code: ${event.code}`);
 
   if (event.reason) {
-    console.log(`причина: ${event.reason}`);
+    console.log(`Reason: ${event.reason}`);
   }
 
   if (event.code === 1006) {
@@ -48,5 +48,5 @@ ws.onmessage = function (event) {
 };
 
 ws.onerror = function (error) {
-  console.error('Ошибка ' + error.message);
+  console.error('Error: ' + error.message);
 };
