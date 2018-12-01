@@ -1,4 +1,4 @@
-(function(window){
+(function (window) {
   const tasks = document.querySelectorAll('.task');
   const groupNameElem = document.querySelector('.title__group-name');
   const taskNameElem = document.querySelector('.title__task-name');
@@ -25,7 +25,7 @@
 
       groupNameElem.innerHTML = groupTitle;
       taskNameElem.innerHTML = taskTitle;
-    })
+    });
   });
 
 

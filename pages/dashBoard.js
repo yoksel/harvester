@@ -39,7 +39,7 @@ webSocket.on('connection', function (ws) {
       action
     } = JSON.parse(message);
 
-    if(action) {
+    if (action) {
       eventEmitter.emit(action);
       return;
     }

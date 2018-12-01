@@ -1,4 +1,4 @@
-(function(window){
+(function (window) {
   const ws = new WebSocket('ws://localhost:8080');
   const targetElem = document.querySelector('.content');
   const statusTextElem = document.querySelector('.status__text');
@@ -38,7 +38,7 @@
 
     statusTextElem.value = message + statusTextElem.value;
 
-    if(statusTextElem.dataset.status !== 'stopped') {
+    if (statusTextElem.dataset.status !== 'stopped') {
       statusNameElem.innerHTML = data.status;
       statusTextElem.dataset.status = data.status;
     }
