@@ -12,8 +12,10 @@ public/screens/*.png
 index.html
 screens.html
 
+tasks/screens.js
 tasks/snippets.js
 tasks/urls.js
+tasks/*.save.js
 
 data/*.json
 data/**/*.*
