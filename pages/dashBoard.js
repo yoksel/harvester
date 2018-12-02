@@ -36,11 +36,12 @@ webSocket.on('connection', function (ws) {
     const {
       listId,
       taskId,
-      action
+      action,
+      payload
     } = JSON.parse(message);
 
     if (action) {
-      eventEmitter.emit(action);
+      eventEmitter.emit(action, payload);
       return;
     }
 
