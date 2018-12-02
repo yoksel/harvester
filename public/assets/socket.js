@@ -46,6 +46,7 @@
     if (data.status && data.status === 'success') {
       if (data.data) {
         targetElem.innerHTML = data.data;
+        window.initTabs();
       }
     } else {
       // console.log(event.data);

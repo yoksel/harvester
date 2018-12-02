@@ -24,6 +24,20 @@ OL {
   margin-bottom: 1em;
 }
 
+.visually-hidden {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+/* Layout */
 .wrapper {
   margin: 2rem auto;
 }
@@ -48,6 +62,7 @@ OL {
   padding: 1rem;
 }
 
+/* Title */
 .title-wrapper {
   margin-bottom: 1rem;
   display: flex;
@@ -67,8 +82,9 @@ OL {
   content: " /";
 }
 
+/* Task Stopper */
 .task-stopper {
-  margin-left: 20;
+  margin-left: 20px;
   border: 2px solid;
   border-radius: 5px;
   font: inherit;
@@ -88,6 +104,7 @@ OL {
   padding-left: 1em;
 }
 
+/* Status */
 .status {
   position: relative;
   margin-bottom: 1em;
@@ -134,16 +151,25 @@ OL {
   background: hsl(80, 80%, 80%);
 }
 
+/* Screens */
 .page-screen {
   display: inline-block;
   position: relative;
-  max-width: 250px;
+  width: 250px;
   margin: .5rem;
   vertical-align: top;
 }
 
 .page-screen__img {
   max-width: 100%;
+}
+
+.page-screen__img-placeholder {
+  display: block;
+  max-width: 100%;
+  padding-top: 100%;
+  background-size: cover;
+  border: 1px solid #DDD;
 }
 
 .page-screen__link {
@@ -190,6 +216,7 @@ OL {
   bottom: 0;
 }
 
+/* Nav */
 .nav {
   margin-bottom: 1rem;
   text-align: center;
@@ -208,6 +235,7 @@ OL {
   max-width: 400px;
 }
 
+/* Pages list  */
 .pages-list {
   padding-left: 20px;
 }
@@ -245,4 +273,40 @@ OL {
 IMG {
   display: block;
   outline: 1px solid #DDD;
+}
+
+/* Dummy tabs */
+.tabs {
+  position: relative;
+}
+
+.tabs__label {
+  display: inline-block;
+  padding: .5rem;
+  margin-bottom: -1px;
+  cursor: pointer;
+}
+
+.tabs__radio:checked + .tabs__label {
+  border: 1px solid #DDD;
+  border-bottom: 0;
+  background: white;
+}
+
+.tabs__content {
+  display: none;
+  padding-top: 1rem;
+  border-top: 1px solid #DDD;
+}
+
+.tabs__radio:not(:checked) ~ .tabs__content--tab .page-screen__img-placeholder {
+  background: none;
+}
+
+.tabs__radio--tab-1:checked ~ .tabs__content--tab-1 {
+  display: block;
+}
+
+.tabs__radio--tab-2:checked ~ .tabs__content--tab-2 {
+  display: block;
 }

@@ -36,4 +36,21 @@
     const dataStr = JSON.stringify(data);
     ws.send(dataStr);
   });
+
+  const initTabs = () => {
+    const tabsRadioInputs = document.querySelectorAll('.tabs__radio');
+
+    tabsRadioInputs.forEach(tabInput => {
+      tabInput.addEventListener('click', () => {
+        const data = {
+          action: 'set-tab',
+          payload: tabInput.id
+        };
+        const dataStr = JSON.stringify(data);
+        ws.send(dataStr);
+      });
+    });
+  };
+
+  window.initTabs = initTabs;
 }(window));
