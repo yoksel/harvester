@@ -1,0 +1,15 @@
+{{#images}}
+  {{#screenPath}}
+    <div class="page-screen">
+      <span
+        class="page-screen__img-placeholder"
+        style="background-image: url({{screenPath}});"></span>
+      <a
+        class="page-screen__link page-screen__link--url"
+        href="{{url}}">Go to Page</a>
+      <a
+        class="page-screen__link page-screen__link--img"
+        href="{{.}}">Open Image</a>
+    </div>
+  {{/screenPath}}
+{{/images}}

@@ -1,0 +1,13 @@
+<div class="tabs">
+  {{#items}}
+    <input
+      class="tabs__radio tabs__radio--{{id}} visually-hidden"
+      type="radio" name="tabs" id="{{id}}" {{checked}}>
+    <label class="tabs__label" for="{{id}}">{{title}}</label>
+  {{/items}}
+  {{#items}}
+    <div class="tabs__content tabs__content--{{id}}">
+      {{{content}}}
+    </div>
+  {{/items}}
+</div>
