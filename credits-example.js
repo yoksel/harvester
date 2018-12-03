@@ -1,8 +1,17 @@
 module.exports = {
+  beforeStart: {
+    url: 'http://some-site.com',
+    clickSelectors: [
+      '.my-beautiful-button'
+    ]
+  },
   selectors: {
     username: '#user',
-    password: '#lj_loginwidget_password',
-    submit: '.lj_login_form .b-loginform-btn--auth',
+    password: '#pass',
+    submit: '.loginform__submit',
+    error: '.loginform__error',
+    banner: '.my-lovely-banner',
+    closeBanner: '.my-lovely-banner__close'
   },
   env: {
     prod: {
