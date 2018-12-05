@@ -19,3 +19,5 @@ tasks/*.save.js
 
 data/*.json
 data/**/*.*
+
+.gitsecret/keys/random_seed
