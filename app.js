@@ -12,5 +12,5 @@ app.use(express.static(__dirname + '/public'));
 app.get('/', dashboardPage);
 
 let httpServer = app.listen(PORT, () => {
-  console.log(`Server is running on localhost:${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
