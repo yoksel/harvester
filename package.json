@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
+    "dev": "nodemon app.js",
     "screens": "node lib/getScreens.js",
     "js:lint": "eslint '**/*.js'",
     "js:fix": "eslint '**/*.js' --fix"
@@ -26,5 +27,8 @@
     "opn": "^5.4.0",
     "puppeteer": "^1.8.0",
     "ws": "^6.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
   }
 }

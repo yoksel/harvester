@@ -9,6 +9,7 @@ const app = express();
 var jsonParser = bodyParser.json();
 
 app.use(express.static(__dirname + '/public'));
+
 app.get('/', dashboardPage);
 
 let httpServer = app.listen(PORT, () => {
