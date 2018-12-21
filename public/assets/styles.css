@@ -71,8 +71,9 @@ OL {
 }
 
 .title {
-  margin-bottom: 0;
   min-height: 20px;
+  margin-bottom: 0;
+  line-height: 1;
 }
 .title__group-name {
   font-size: 16px;
@@ -82,9 +83,9 @@ OL {
   content: " /";
 }
 
-/* Task Stopper */
-.task-stopper {
-  margin-left: 20px;
+/* Task Controls */
+.task-control {
+  margin-left: 10px;
   border: 2px solid;
   border-radius: 5px;
   font: inherit;
@@ -92,11 +93,11 @@ OL {
   cursor: pointer;
 }
 
-.task-stopper:disabled {
+.task-control:disabled {
   opacity: .25;
   cursor: not-allowed;
 }
-.task-stopper:active {
+.task-control:active {
   color: orangered;
 }
 

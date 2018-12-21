@@ -4,7 +4,9 @@
   const taskNameElem = document.querySelector('.title__task-name');
   const statusTextElem = document.querySelector('.status__text');
   const targetElem = document.querySelector('.content');
-  const taskStopper = document.querySelector('.task-stopper');
+  const taskRunner = document.querySelector('.task-control--runner');
+  const taskShowData = document.querySelector('.task-control--data');
+  let currentTask = {};
 
   tasks.forEach(task => {
     task.addEventListener('click', event => {
@@ -12,7 +14,7 @@
       statusTextElem.value = '';
       targetElem.innerHTML = '';
       statusTextElem.dataset.status = '';
-      taskStopper.disabled = false;
+      taskRunner.disabled = false;
 
       const taskId = task.dataset.taskid;
       const listId = task.dataset.listid;
@@ -21,6 +23,8 @@
 
       const data = {listId, taskId};
       const dataStr = JSON.stringify(data);
+      currentTask = data;
+
       ws.send(dataStr);
 
       groupNameElem.innerHTML = groupTitle;
@@ -28,11 +32,19 @@
     });
   });
 
-
-  taskStopper.addEventListener('click', () => {
-    taskStopper.disabled = true;
+  taskRunner.addEventListener('click', () => {
+    taskRunner.disabled = true;
 
     const data = {action: 'stop-task'};
+    const dataStr = JSON.stringify(data);
+    ws.send(dataStr);
+  });
+
+  taskShowData.addEventListener('click', () => {
+    const data = {
+      action: 'show-data',
+      payload: currentTask
+    };
     const dataStr = JSON.stringify(data);
     ws.send(dataStr);
   });
