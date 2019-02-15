@@ -45,7 +45,6 @@ webSocket.on('connection', function (ws) {
       return;
     }
 
-    console.log('RUN:', listId, taskId);
     handleTask({
       ws,
       listId,

@@ -5,8 +5,13 @@
   const statusTextElem = document.querySelector('.status__text');
   const targetElem = document.querySelector('.content');
   const taskRunner = document.querySelector('.task-control--runner');
-  const taskShowData = document.querySelector('.task-control--data');
+  const taskShowData = document.querySelector('.task-control--show-data');
+
   let currentTask = {};
+  let taskIsRunning = false;
+
+  taskRunner.disabled = true;
+  taskShowData.disabled = true;
 
   tasks.forEach(task => {
     task.addEventListener('click', event => {
@@ -15,17 +20,15 @@
       targetElem.innerHTML = '';
       statusTextElem.dataset.status = '';
       taskRunner.disabled = false;
+      taskShowData.disabled = false;
 
-      const taskId = task.dataset.taskid;
-      const listId = task.dataset.listid;
       const groupTitle = task.dataset.grouptitle;
       const taskTitle = task.dataset.tasktitle;
-
+      const taskId = task.dataset.taskid;
+      const listId = task.dataset.listid;
       const data = {listId, taskId};
-      const dataStr = JSON.stringify(data);
       currentTask = data;
-
-      ws.send(dataStr);
+      taskRunner.innerHTML = 'Start';
 
       groupNameElem.innerHTML = groupTitle;
       taskNameElem.innerHTML = taskTitle;
@@ -33,11 +36,28 @@
   });
 
   taskRunner.addEventListener('click', () => {
-    taskRunner.disabled = true;
+    if(taskIsRunning === true) {
+      // STOP task
+      taskShowData.disabled = false;
 
-    const data = {action: 'stop-task'};
-    const dataStr = JSON.stringify(data);
-    ws.send(dataStr);
+      const data = {action: 'stop-task'};
+      const dataStr = JSON.stringify(data);
+      ws.send(dataStr);
+
+      taskIsRunning = false;
+      taskRunner.innerHTML = 'Start';
+    }
+    else {
+      // START task
+      taskShowData.disabled = true;
+      const dataStr = JSON.stringify(currentTask);
+      ws.send(dataStr);
+
+      statusTextElem.dataset.status = '';
+      taskRunner.innerHTML = 'Stop';
+      taskIsRunning = true;
+      targetElem.innerHTML = '';
+    }
   });
 
   taskShowData.addEventListener('click', () => {
