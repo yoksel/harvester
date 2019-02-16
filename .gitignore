@@ -7,8 +7,8 @@ tree.json
 visited.json
 collected.json
 
-public/screens/*
-!public/screens/README.md
+public/*/
+!public/assets/
 
 index.html
 screens.html
