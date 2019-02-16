@@ -33,7 +33,8 @@
   },
   "nodemonConfig": {
     "ignore": [
-      "data/*"
+      "data/*",
+      "public/snippets/*"
     ]
   }
 }
