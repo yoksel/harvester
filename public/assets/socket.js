@@ -3,6 +3,8 @@
   const targetElem = document.querySelector('.content');
   const statusTextElem = document.querySelector('.status__text');
   const statusNameElem = document.querySelector('.status__name');
+  const taskPrepareData = document.querySelector('.task-control--prepare-data');
+  const taskDownloadData = document.querySelector('.task-control--download-data');
 
   ws.onopen = function () {
     console.log('Connection established');
@@ -43,13 +45,20 @@
       statusTextElem.dataset.status = data.status;
     }
 
-    if (data.status && data.status === 'success') {
-      if (data.data) {
-        targetElem.innerHTML = data.data;
-        window.initTabs();
-      }
-    } else {
-      // console.log(event.data);
+    if(!data.status || !data.data) {
+      return;
+    }
+
+    if (data.status === 'success') {
+      targetElem.innerHTML = data.data;
+      window.initTabs();
+    }
+    else if (data.status === 'download') {
+      const {name, url} = data.data;
+      taskDownloadData.download = name;
+      taskDownloadData.href = url;
+      taskDownloadData.hidden = false;
+      taskPrepareData.hidden = true;
     }
   };
 

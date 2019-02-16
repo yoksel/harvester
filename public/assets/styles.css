@@ -24,6 +24,10 @@ OL {
   margin-bottom: 1em;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 .visually-hidden {
   position: absolute;
 
@@ -45,14 +49,27 @@ OL {
   text-align: center;
 }
 
+.wrapper--downloaded {
+  padding: 0 1rem;
+}
+
 .container {
   display: flex;
   border-top: 1px solid #DDD;
 }
 
+.container--downloaded {
+  border-top: none;
+}
+
 .main {
   padding: 1rem;
   flex-grow: 1;
+}
+
+.container--downloaded .main {
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .aside {
@@ -75,6 +92,11 @@ OL {
   margin-bottom: 0;
   line-height: 1;
 }
+
+.title--downloaded {
+  margin-bottom: 1rem;
+}
+
 .title__group-name {
   font-size: 16px;
   color: #555;
@@ -84,11 +106,17 @@ OL {
 }
 
 /* Task Controls */
+.task-controls {
+  text-align: right;
+}
+
 .task-control {
+  display: inline-block;
   margin-left: 4px;
   padding: 4px 8px;
   border: 2px solid;
   border-radius: 5px;
+  box-sizing: border-box;
   font: inherit;
   color: #999;
   text-decoration: none;
@@ -101,6 +129,18 @@ OL {
 }
 .task-control:active {
   color: orangered;
+}
+
+.task-control--prepare-data,
+.task-control--download-data {
+  min-width: 102px;
+  text-align: center;
+}
+
+.task-control--download-data {
+  background: #333;
+  border-color: #333;
+  color: #FFF;
 }
 
 .tasks-group__list {

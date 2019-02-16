@@ -6,12 +6,15 @@
   const targetElem = document.querySelector('.content');
   const taskRunner = document.querySelector('.task-control--runner');
   const taskShowData = document.querySelector('.task-control--show-data');
+  const taskPrepareData = document.querySelector('.task-control--prepare-data');
+  const taskDownloadData = document.querySelector('.task-control--download-data');
 
   let currentTask = {};
   let taskIsRunning = false;
 
   taskRunner.disabled = true;
   taskShowData.disabled = true;
+  taskPrepareData.disabled = true;
 
   tasks.forEach(task => {
     task.addEventListener('click', event => {
@@ -21,6 +24,9 @@
       statusTextElem.dataset.status = '';
       taskRunner.disabled = false;
       taskShowData.disabled = false;
+      taskPrepareData.disabled = false;
+      taskPrepareData.hidden = false;
+      taskDownloadData.hidden = true;
 
       const groupTitle = task.dataset.grouptitle;
       const taskTitle = task.dataset.tasktitle;
@@ -63,6 +69,15 @@
   taskShowData.addEventListener('click', () => {
     const data = {
       action: 'show-data',
+      payload: currentTask
+    };
+    const dataStr = JSON.stringify(data);
+    ws.send(dataStr);
+  });
+
+  taskPrepareData.addEventListener('click', () => {
+    const data = {
+      action: 'download-data',
       payload: currentTask
     };
     const dataStr = JSON.stringify(data);
