@@ -32,6 +32,8 @@
     "nodemon": "^1.18.9"
   },
   "nodemonConfig": {
-    "ignore": ["data/*"]
+    "ignore": [
+      "data/*"
+    ]
   }
 }
