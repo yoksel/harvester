@@ -45,6 +45,7 @@
     if(taskIsRunning === true) {
       // STOP task
       taskShowData.disabled = false;
+      taskPrepareData.disabled = false;
 
       const data = {action: 'stop-task'};
       const dataStr = JSON.stringify(data);
@@ -56,6 +57,7 @@
     else {
       // START task
       taskShowData.disabled = true;
+      taskPrepareData.disabled = true;
       const dataStr = JSON.stringify(currentTask);
       ws.send(dataStr);
 
