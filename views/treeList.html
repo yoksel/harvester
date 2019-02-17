@@ -4,9 +4,9 @@
       <a href="{{data.url}}">{{data.title}}</a>
     {{/data.url}}
     <span>{{data.pathname}}</span>
-    {{#data.screenPath}}
-      <span class="pages-item__screen" style="background-image: url({{data.screenPath}});"></span>
-    {{/data.screenPath}}
+    {{#data.screens}}
+      <span class="pages-item__screen" style="background-image: url({{path}});"></span>
+    {{/data.screens}}
   </h4>
 
   <ol class="pages-list">

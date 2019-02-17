@@ -215,6 +215,16 @@ OL {
   border: 1px solid #DDD;
 }
 
+.page-screen__img-sizes {
+  position: absolute;
+  bottom: 5px;
+  padding: 5px;
+  right: 5px;
+  line-height: 1;
+  background: gold;
+  opacity: .75;
+}
+
 .page-screen__link {
   display: flex;
   position: absolute;

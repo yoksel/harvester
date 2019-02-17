@@ -1,15 +1,15 @@
 {{#images}}
-  {{#screenPath}}
+  {{#screens}}
     <div class="page-screen">
       <span
         class="page-screen__img-placeholder"
-        style="background-image: url({{screenPath}});"></span>
+        style="background-image: url({{path}});"></span>
       <a
         class="page-screen__link page-screen__link--url"
         href="{{url}}">Go to Page</a>
       <a
         class="page-screen__link page-screen__link--img"
-        href="{{.}}">Open Image</a>
+        href="{{path}}">Open Image</a>
     </div>
-  {{/screenPath}}
+  {{/screens}}
 {{/images}}

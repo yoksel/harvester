@@ -1,11 +1,14 @@
 {{#images}}
-  {{#screenPath}}
+  {{#screens}}
     <div class="page-screen">
       <img
         class="page-screen__img"
-        src="{{.}}"
+        src="{{path}}"
         alt="{{title}}"
         title="{{title}}"/>
+      <span class="page-screen__img-sizes">
+        {{sizes.width}}x{{sizes.height}}
+      </span>
       <a
         class="page-screen__link page-screen__link--url"
         href="{{url}}">Go to Page</a>
@@ -13,5 +16,5 @@
         class="page-screen__link page-screen__link--img"
         href="{{.}}">Open Image</a>
     </div>
-  {{/screenPath}}
+  {{/screens}}
 {{/images}}

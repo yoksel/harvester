@@ -2,8 +2,8 @@
   {{#data.url}}
   <a href="{{data.url}}">{{data.title}}</a>
   {{/data.url}}
-  {{#data.screenPath}}
-    <span class="pages-item__screen" style="background-image: url({{data.screenPath}});"></span>
-  {{/data.screenPath}}
+  {{#data.screens}}
+    <span class="pages-item__screen" style="background-image: url({{path}});"></span>
+  {{/data.screens}}
   <span>{{data.pathname}}</span>
 </li>
