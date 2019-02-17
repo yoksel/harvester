@@ -3,10 +3,15 @@
     {{#data.url}}
       <a href="{{data.url}}">{{data.title}}</a>
     {{/data.url}}
-    <span>{{data.pathname}}</span>
     {{#data.screens}}
       <span class="pages-item__screen" style="background-image: url({{path}});"></span>
     {{/data.screens}}
+    <span>{{data.pathname}}</span>
+    {{#data.from}}
+      <a
+        class="pages-item__from"
+        href="{{data.from}}">⤵️</a>
+    {{/data.from}}
   </h4>
 
   <ol class="pages-list">

@@ -328,6 +328,14 @@ IMG {
   outline: 1px solid #DDD;
 }
 
+.pages-item__from {
+  text-decoration: none;
+}
+.pages-item__from:hover::after {
+  content: attr(href);
+  margin-left: .25em;
+}
+
 /* Dummy tabs */
 .tabs {
   position: relative;
