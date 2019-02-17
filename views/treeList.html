@@ -1,7 +1,12 @@
 <li class="pages-item">
   <h4>
-    <a href="{{data.url}}">{{data.title}}</a> <span>{{data.pathname}}</span>
-    <span class="pages-item__screen" style="background-image: url({{data.screenPath}});"></span>
+    {{#data.url}}
+      <a href="{{data.url}}">{{data.title}}</a>
+    {{/data.url}}
+    <span>{{data.pathname}}</span>
+    {{#data.screenPath}}
+      <span class="pages-item__screen" style="background-image: url({{data.screenPath}});"></span>
+    {{/data.screenPath}}
   </h4>
 
   <ol class="pages-list">

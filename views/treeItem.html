@@ -1,5 +1,9 @@
 <li class="pages-item">
+  {{#data.url}}
   <a href="{{data.url}}">{{data.title}}</a>
-  <span class="pages-item__screen" style="background-image: url({{data.screenPath}});"></span>
+  {{/data.url}}
+  {{#data.screenPath}}
+    <span class="pages-item__screen" style="background-image: url({{data.screenPath}});"></span>
+  {{/data.screenPath}}
   <span>{{data.pathname}}</span>
 </li>
