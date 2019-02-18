@@ -19,10 +19,20 @@ H1, H2, H3, H4 {
   margin-bottom: .5em;
 }
 
+H4 {
+  font-size: 16px;
+}
+
 OL {
   margin: .3em;
   margin-bottom: 1em;
 }
+
+IMG {
+  display: block;
+  outline: 1px solid #DDD;
+}
+
 
 [hidden] {
   display: none !important;
@@ -323,16 +333,13 @@ OL {
   box-shadow: 0 0 10px rgba(0, 0, 0, .25);
 }
 
-IMG {
-  display: block;
-  outline: 1px solid #DDD;
-}
-
 .pages-item__from {
+  position: relative;
   text-decoration: none;
 }
 .pages-item__from:hover::after {
   content: attr(href);
+  position: absolute;
   margin-left: .25em;
 }
 
