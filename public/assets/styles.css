@@ -217,6 +217,14 @@ IMG {
   max-width: 100%;
 }
 
+.page-screen__img--compare {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: .75;
+  mix-blend-mode: difference;
+}
+
 .page-screen__img-placeholder {
   display: block;
   max-width: 100%;
@@ -379,4 +387,58 @@ IMG {
 
 .tabs__radio--tab-2:checked ~ .tabs__content--tab-2 {
   display: block;
+}
+
+/* Options */
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.options__label {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.options__input:disabled + .options__label-text {
+  opacity: .5;
+  }
+
+.options__help {
+  margin-left: .5rem;
+  width: 1.5em;
+  height: 1.5em;
+  background: #DDD;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 1.5em;
+  cursor: pointer;
+}
+.options__tip {
+  display: none;
+  position: relative;
+  flex-basis: 100%;
+}
+
+.options__help:hover + .options__tip {
+  display: block;
+}
+
+.options__tip-list {
+  position: absolute;
+  right: 0;
+  min-width: 220px;
+  margin: .5rem 0 0 0;
+  padding: .5rem;
+  border: 2px solid #DDD;
+  border-radius: 5px;
+  list-style-position: inside;
+  font-size: 13px;
+}
+
+.options__tip-list LI:not(:last-child) {
+  margin-bottom: .25rem;
 }

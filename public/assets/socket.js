@@ -5,6 +5,7 @@
   const statusNameElem = document.querySelector('.status__name');
   const taskPrepareData = document.querySelector('.task-control--prepare-data');
   const taskDownloadData = document.querySelector('.task-control--download-data');
+  const inputCompare = document.querySelector('.options__input--compare');
 
   ws.onopen = function () {
     console.log('Connection established');
@@ -38,11 +39,17 @@
         ${data.message}
         ⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼\n`;
 
-    statusTextElem.value = message + statusTextElem.value;
+    if(data.message) {
+      statusTextElem.value = message + statusTextElem.value;
+    }
 
-    if (statusTextElem.dataset.status !== 'stopped') {
+    if (data.status && statusTextElem.dataset.status !== 'stopped') {
       statusNameElem.innerHTML = data.status;
       statusTextElem.dataset.status = data.status;
+    }
+
+    if(data.task === 'check compare') {
+      inputCompare.disabled = !data.data.isFileExist;
     }
 
     if(!data.status || !data.data) {

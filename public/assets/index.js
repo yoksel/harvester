@@ -8,6 +8,8 @@
   const taskShowData = document.querySelector('.task-control--show-data');
   const taskPrepareData = document.querySelector('.task-control--prepare-data');
   const taskDownloadData = document.querySelector('.task-control--download-data');
+  const labelCompare = document.querySelector('.options__label--compare');
+  const inputCompare = document.querySelector('.options__input--compare');
 
   let currentTask = {};
   let taskIsRunning = false;
@@ -15,6 +17,8 @@
   taskRunner.disabled = true;
   taskShowData.disabled = true;
   taskPrepareData.disabled = true;
+  inputCompare.checked = false;
+  labelCompare.hidden = true;
 
   tasks.forEach(task => {
     task.addEventListener('click', event => {
@@ -27,6 +31,7 @@
       taskPrepareData.disabled = false;
       taskPrepareData.hidden = false;
       taskDownloadData.hidden = true;
+      inputCompare.checked = false;
 
       const groupTitle = task.dataset.grouptitle;
       const taskTitle = task.dataset.tasktitle;
@@ -35,6 +40,8 @@
       const data = {listId, taskId};
       currentTask = data;
       taskRunner.innerHTML = 'Start';
+
+      handleCompare(listId);
 
       groupNameElem.innerHTML = groupTitle;
       taskNameElem.innerHTML = taskTitle;
@@ -86,6 +93,18 @@
     ws.send(dataStr);
   });
 
+  inputCompare.addEventListener('click', () => {
+    const data = {
+      action: 'compareScreens',
+      payload: {
+        isCompare: inputCompare.checked
+      }
+    };
+
+    const dataStr = JSON.stringify(data);
+    ws.send(dataStr);
+  });
+
   const initTabs = () => {
     const tabsRadioInputs = document.querySelectorAll('.tabs__radio');
 
@@ -100,6 +119,22 @@
       });
     });
   };
+
+  const handleCompare = (listId) => {
+    if(listId === 'screens'){
+      labelCompare.hidden = false;
+
+      const data = {
+        action: 'check-compare',
+        payload: currentTask
+      };
+      const dataStr = JSON.stringify(data);
+      ws.send(dataStr);
+    }
+    else {
+      labelCompare.hidden = true;
+    }
+  }
 
   window.initTabs = initTabs;
 }(window));
