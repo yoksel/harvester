@@ -8,6 +8,11 @@
     <div class="wrapper">
       <h1>🌪Harvester</h1>
 
+      <svg class="svg-defs">
+        <symbol id="arrow-left" viewBox="0 0 30 48.653"><path d="M2.441 23.004L0 25.481l2.441 2.477L22.84 48.653l4.884-4.955-17.692-18.486L30 4.954 25.118 0 2.441 23.004z"/></symbol>
+        <symbol id="arrow-right" viewBox="0 0 30 48.652"><path d="M27.559 23.004L4.882 0 0 4.954l19.968 20.258L2.275 43.698l4.885 4.954 20.398-20.694L30 25.481l-2.441-2.477z"/></symbol>
+      </svg>
+
       <div class="container">
         <div class="aside">
           {{#tasksGroups}}
@@ -73,6 +78,51 @@
       </div>
     </div>
 
+    <div class="fullview" hidden>
+      <div class="fullview__fader"></div>
+      <div class="fullview__container">
+        <div class="fullview__controls">
+          <button class="fullview__control" data-direction="prev">
+            <svg class="fullview__control-arrow">
+              <use xlink:href="#arrow-left"/>
+            </svg>
+          </button>
+          <button class="fullview__control" data-direction="next">
+            <svg class="fullview__control-arrow">
+              <use xlink:href="#arrow-right"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="fullview__imgs-wrapper">
+          <div class="fullview__img-wrapper">
+            <img
+              src="http://placekitten.com/200/500"
+              width="100"
+              class="fullview__img fullview__img--orig">
+
+            <footer class="fullview__footer">
+              <a
+                class="fullview__link"
+                href="{{url}}">Go to Page</a>
+              <span class="fullview__img-sizes">
+                {{sizes.width}}x{{sizes.height}}
+              </span>
+            </footer>
+          </div>
+          <div class="fullview__img-wrapper fullview__img-wrapper--compare">
+            <img
+              width="100"
+              src="http://placekitten.com/800/500"
+              class="fullview__img fullview__img--compare">
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="assets/gallery.js"></script>
     <script type="text/javascript" src="assets/socket.js"></script>
     <script type="text/javascript" src="assets/index.js"></script>
   </body>

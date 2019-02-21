@@ -51,6 +51,10 @@ IMG {
   overflow: hidden;
 }
 
+.svg-defs {
+  display: none;
+}
+
 /* Layout */
 .wrapper {
   margin: 2rem auto;
@@ -221,7 +225,7 @@ IMG {
   position: absolute;
   top: 0;
   left: 0;
-  opacity: .75;
+  opacity: .5;
   mix-blend-mode: difference;
 }
 
@@ -441,4 +445,123 @@ IMG {
 
 .options__tip-list LI:not(:last-child) {
   margin-bottom: .25rem;
+}
+
+/* Fullview */
+
+.fullview {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.fullview__fader {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,.85);
+}
+
+.fullview__container {
+  position: relative;
+  flex-basis: 100%;
+  margin: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fullview__controls {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  max-height: 20rem;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.fullview__control {
+  flex-basis: 50%;
+  background: transparent;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  outline: none;
+}
+
+.fullview__control:last-child {
+  justify-content: flex-end;
+}
+
+.fullview__control-arrow {
+  width: 32px;
+  height: 32px;
+  fill: #FFF;
+}
+
+
+.fullview__control:focus .fullview__control-arrow {
+  fill: greenyellow
+}
+
+.fullview__imgs-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.fullview__img-wrapper {
+  position: relative;
+  max-width: 100%;
+  display: flex;
+  padding-bottom: 2rem;
+}
+
+.fullview__img {
+  width: auto;
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+}
+
+.fullview__img-wrapper--compare {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  opacity: .5;
+  mix-blend-mode: difference;
+}
+
+.fullview__footer {
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #FFF;
+}
+
+.fullview__footer A,
+.fullview__footer A:visited {
+  color: inherit
 }

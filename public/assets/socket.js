@@ -67,6 +67,10 @@
       taskDownloadData.hidden = false;
       taskPrepareData.hidden = true;
     }
+
+    if(data.task === 'show collected data') {
+      window.initGallery();
+    }
   };
 
   ws.onerror = function (error) {
