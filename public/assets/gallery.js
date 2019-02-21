@@ -16,11 +16,11 @@
     fullview.hidden = true;
   });
 
-  document.addEventListener('keyup',(ev) => {
+  document.addEventListener('keyup', (ev) => {
     if(ev.keyCode === 27) {
       fullview.hidden = true;
     }
-  })
+  });
 
   // ------------------------------
 
@@ -102,7 +102,6 @@
 
   fullviewControls.forEach(control => {
     control.addEventListener('click', () => {
-      console.log(control.dataset.direction);
 
       if(control.dataset.direction === 'prev'){
         currentIndex -= 1;
@@ -119,7 +118,6 @@
         }
       }
 
-      console.log(currentIndex);
       setImages();
     })
   });

@@ -475,6 +475,7 @@ IMG {
   display: flex;
   justify-content: center;
   align-items: center;
+  pointer-events: none;
 }
 
 .fullview__controls {
@@ -488,6 +489,7 @@ IMG {
   margin: auto;
   display: flex;
   justify-content: space-between;
+  pointer-events: auto;
 }
 
 .fullview__control {
@@ -519,11 +521,10 @@ IMG {
 .fullview__imgs-wrapper {
   position: absolute;
   top: 0;
-  right: 0;
   bottom: 0;
-  left: 0;
   display: flex;
   justify-content: center;
+  pointer-events: auto;
 }
 
 .fullview__img-wrapper {
