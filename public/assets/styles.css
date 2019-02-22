@@ -397,7 +397,8 @@ IMG {
 .options {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 1rem;
 }
 
@@ -531,7 +532,7 @@ IMG {
   position: relative;
   max-width: 100%;
   display: flex;
-  padding-bottom: 2rem;
+  padding: 2rem 0;
 }
 
 .fullview__img {
@@ -549,12 +550,11 @@ IMG {
   mix-blend-mode: difference;
 }
 
-.fullview__footer {
+.fullview__panel {
   position: absolute;
   z-index: 3;
   left: 0;
   right: 0;
-  bottom: 0;
   height: 2rem;
   display: flex;
   justify-content: space-between;
@@ -562,7 +562,14 @@ IMG {
   color: #FFF;
 }
 
-.fullview__footer A,
-.fullview__footer A:visited {
+.fullview__panel--top {
+  top: 0;
+}
+.fullview__panel--bottom {
+  bottom: 0;
+}
+
+.fullview__panel A,
+.fullview__panel A:visited {
   color: inherit
 }

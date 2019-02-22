@@ -26,6 +26,8 @@
               <span class="title__group-name"></span>
               <span class="title__task-name"></span>
             </h2>
+
+            <!-- Task controls -->
             <div class="task-controls">
               <button
                 class="task-control task-control--runner"
@@ -46,7 +48,10 @@
                 download=""
                 >Download</a>
             </div>
+            <!-- /Task controls -->
           </div>
+
+          <!-- Status -->
           <div class="status">
             <div class="status__name">status</div>
             <textarea
@@ -54,6 +59,9 @@
               placeholder="..."
               ></textarea>
           </div>
+          <!-- /Status -->
+
+          <!-- Task options -->
           <div class="options">
             <label class="options__label options__label--compare">
               <input
@@ -73,14 +81,20 @@
               </span>
             </label>
           </div>
+          <!-- /Task options -->
+
+          <!-- Task content -->
           <div class="content"></div>
         </main>
       </div>
     </div>
 
+    <!-- Full view -->
     <div class="fullview" hidden>
       <div class="fullview__fader"></div>
+
       <div class="fullview__container">
+        <!-- Full view controls -->
         <div class="fullview__controls">
           <button class="fullview__control" data-direction="prev">
             <svg class="fullview__control-arrow">
@@ -94,6 +108,7 @@
           </button>
         </div>
 
+        <!-- Full view images -->
         <div class="fullview__imgs-wrapper">
           <div class="fullview__img-wrapper">
             <img
@@ -101,14 +116,16 @@
               width="100"
               class="fullview__img fullview__img--orig">
 
-            <footer class="fullview__footer">
-              <a
-                class="fullview__link"
-                href="{{url}}">Go to Page</a>
+            <!-- Full view bottom panel -->
+            <div class="fullview__panel fullview__panel--bottom">
               <span class="fullview__img-sizes">
                 {{sizes.width}}x{{sizes.height}}
               </span>
-            </footer>
+              <a
+                class="fullview__link"
+                href="{{url}}">Go to Page</a>
+            </div>
+            <!-- /Full view bottom panel -->
           </div>
           <div class="fullview__img-wrapper fullview__img-wrapper--compare">
             <img
@@ -116,11 +133,10 @@
               src="http://placekitten.com/800/500"
               class="fullview__img fullview__img--compare">
           </div>
-
-
         </div>
       </div>
     </div>
+    <!-- /Full view -->
 
     <script type="text/javascript" src="assets/gallery.js"></script>
     <script type="text/javascript" src="assets/socket.js"></script>
