@@ -1,14 +1,19 @@
 (function (window) {
+  const body = document.body;
   const fullview = document.querySelector('.fullview');
   const fullviewFader = document.querySelector('.fullview__fader');
   const fullviewSizes = document.querySelector('.fullview__img-sizes');
+  const fullviewImgWrapper = document.querySelector('.fullview__img-wrapper');
   const fullviewImgOrig = document.querySelector('.fullview__img--orig');
   const fullviewImgCompare = document.querySelector('.fullview__img--compare');
   const fullviewControls = document.querySelectorAll('.fullview__control');
   const fullviewLink = document.querySelector('.fullview__link');
+  const inputsShowCompare = document.querySelectorAll('.options__input--show-compare');
+  const inputsOpacity = document.querySelectorAll('.options__input--opacity');
   let pageScreensLinks = null;
   let currentIndex = null;
   let pageScreensList = [];
+  const storageData = getStorageData();
 
   // ------------------------------
 
@@ -51,9 +56,15 @@
 
   const setImages = () => {
     const data = pageScreensList[currentIndex];
+    if(!data) {
+      return;
+    }
+
     fullviewSizes.innerHTML = data.sizes;
     fullviewImgOrig.src = data.urls.orig;
     fullviewLink.href = data.pageUrl;
+
+    fullviewImgCompare.hidden = true;
 
     if(data.urls.compare) {
       fullviewImgCompare.src = data.urls.compare;
@@ -100,6 +111,16 @@
 
   // ------------------------------
 
+  function getStorageData () {
+    const storageHarvyData = localStorage.getItem('harvester');
+    return storageHarvyData ? JSON.parse(storageHarvyData) : {
+      isShowCompare: true,
+      opacity: .6
+    }
+  }
+
+  // ------------------------------
+
   fullviewControls.forEach(control => {
     control.addEventListener('click', () => {
 
@@ -121,6 +142,47 @@
       setImages();
     })
   });
+
+  // ------------------------------
+
+  body.classList.toggle('page--show-compare', storageData.isShowCompare);
+
+  inputsShowCompare.forEach(input => {
+    input.checked = storageData.isShowCompare;
+
+    input.addEventListener('click', () => {
+      storageData.isShowCompare = !storageData.isShowCompare;
+
+      localStorage.setItem('harvester', JSON.stringify(storageData));
+      body.classList.toggle('page--show-compare', storageData.isShowCompare);
+
+      inputsShowCompare.forEach(input => {
+        input.checked = storageData.isShowCompare;
+      });
+    })
+  });
+
+  // ------------------------------
+
+  body.dataset['compareOpacity'] = storageData.opacity;
+
+
+  inputsOpacity.forEach(input => {
+    input.value = storageData.opacity;
+
+    input.addEventListener('change', () => {
+      storageData.opacity = input.value;
+
+      localStorage.setItem('harvester', JSON.stringify(storageData));
+      body.dataset['compareOpacity'] = storageData.opacity;
+
+      inputsOpacity.forEach(input => {
+        input.value = storageData.opacity;
+      });
+    })
+  })
+
+  // ------------------------------
 
   window.initGallery = initGallery;
 

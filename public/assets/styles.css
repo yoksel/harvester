@@ -33,9 +33,24 @@ IMG {
   outline: 1px solid #DDD;
 }
 
+INPUT[type="checkbox"],
+INPUT[type="radio"] {
+  margin-right: 0.25rem;
+}
+
+INPUT[type="text"],
+INPUT[type="number"] {
+  border: none;
+  border-radius: 3px;
+  border: 1px solid #CCC;
+}
 
 [hidden] {
-  display: none !important;
+  /* Hack to fix wrong sizes of images in popup */
+  position: absolute;
+  z-index: -10;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .visually-hidden {
@@ -53,6 +68,55 @@ IMG {
 
 .svg-defs {
   display: none;
+}
+
+/* Images compare */
+.img-compare {
+  /*visibility: hidden;*/
+  opacity: 0;
+  transition: all .25s;
+}
+
+.page--show-compare[data-compare-opacity="0"] .img-compare {
+  opacity: 0;
+}
+.page--show-compare[data-compare-opacity="0.2"] .img-compare {
+  opacity: .2;
+}
+.page--show-compare[data-compare-opacity="0.4"] .img-compare {
+  opacity: .4;
+}
+.page--show-compare[data-compare-opacity="0.6"] .img-compare {
+  opacity: .6;
+}
+.page--show-compare[data-compare-opacity="0.8"] .img-compare {
+  opacity: .8;
+}
+.page--show-compare[data-compare-opacity="1"] .img-compare {
+  opacity: 1;
+}
+
+.img-compare:hover {
+  opacity: 1 !important;
+}
+
+.page--show-compare .img-compare {
+  mix-blend-mode: difference;
+}
+
+/* hack for smooth hovering effect */
+.img-compare-helper {
+  position: absolute;
+  top: 2rem;
+  right: 0;
+  bottom: 2rem;
+  left: 0;
+  background: transparent;
+  transition: all .25s;
+}
+
+.page--show-compare .img-compare:hover + .img-compare-helper {
+  background: black;
 }
 
 /* Layout */
@@ -225,8 +289,6 @@ IMG {
   position: absolute;
   top: 0;
   left: 0;
-  opacity: .5;
-  mix-blend-mode: difference;
 }
 
 .page-screen__img-placeholder {
@@ -448,8 +510,15 @@ IMG {
   margin-bottom: .25rem;
 }
 
-/* Fullview */
+.options__label--show-compare {
+  margin-left: auto;
+}
 
+.options__label--show-compare + .options__label--opacity {
+  margin-left: .75rem;
+}
+
+/* Fullview */
 .fullview {
   position: fixed;
   top: 0;
@@ -490,11 +559,10 @@ IMG {
   margin: auto;
   display: flex;
   justify-content: space-between;
-  pointer-events: auto;
 }
 
 .fullview__control {
-  flex-basis: 50%;
+  flex-basis: 25%;
   background: transparent;
   border: none;
   padding: 0;
@@ -502,6 +570,7 @@ IMG {
   align-items: center;
   cursor: pointer;
   outline: none;
+  pointer-events: auto;
 }
 
 .fullview__control:last-child {
@@ -530,24 +599,30 @@ IMG {
 
 .fullview__img-wrapper {
   position: relative;
-  max-width: 100%;
-  display: flex;
-  padding: 2rem 0;
-}
-
-.fullview__img {
   width: auto;
-  max-width: 100%;
-  max-height: 100%;
-  margin: auto;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  padding: 2rem 0;
 }
 
 .fullview__img-wrapper--compare {
   position: absolute;
   top: 0;
+  right: 0;
   bottom: 0;
-  opacity: .5;
-  mix-blend-mode: difference;
+  left: 0;
+}
+
+.fullview__img {
+  position: relative;
+  width: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.fullview__img--compare {
+  z-index: 1;
 }
 
 .fullview__panel {
