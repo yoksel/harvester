@@ -4,6 +4,8 @@ const listTitle = 'Discovery pages';
 const tasks = [
   {
     id: 'pages-finder',
+    // Uncomment next line to disable task
+    // disabled: true,
     name: 'Find all links on site',
     creditsEnv: 'prod',
     useBeforeStart: false,

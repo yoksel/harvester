@@ -64,6 +64,9 @@ const dashboardPage = async (req, res) => {
 
   const tasksGroups = Object.keys(tasks)
     .map(key => {
+      tasks[key].tasks = tasks[key].tasks
+        .filter(task => !task.disabled);
+
       return mustache.render(templates.tasksList, tasks[key]);
     });
 
