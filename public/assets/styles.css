@@ -519,6 +519,18 @@ INPUT[type="number"] {
   margin-left: .75rem;
 }
 
+.options__label--compare,
+.options__label--opacity,
+.options__label--show-compare {
+  display: none;
+}
+
+[data-task-group="screens"] .options__label--compare,
+[data-task-group="screens"] .options__label--opacity,
+[data-task-group="screens"] .options__label--show-compare {
+  display: flex;
+}
+
 /* Fullview */
 .fullview {
   position: fixed;

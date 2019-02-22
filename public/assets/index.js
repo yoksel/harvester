@@ -8,7 +8,7 @@
   const taskShowData = document.querySelector('.task-control--show-data');
   const taskPrepareData = document.querySelector('.task-control--prepare-data');
   const taskDownloadData = document.querySelector('.task-control--download-data');
-  const labelCompare = document.querySelector('.options__label--compare');
+  const taskOptions = document.querySelector('.options--task');
   const inputCompare = document.querySelector('.options__input--compare');
 
   let currentTask = {};
@@ -18,7 +18,6 @@
   taskShowData.disabled = true;
   taskPrepareData.disabled = true;
   inputCompare.checked = false;
-  labelCompare.hidden = true;
 
   tasks.forEach(task => {
     task.addEventListener('click', event => {
@@ -40,6 +39,7 @@
       const data = {listId, taskId};
       currentTask = data;
       taskRunner.innerHTML = 'Start';
+      taskOptions.dataset.taskGroup = listId;
 
       handleCompare(listId);
 
@@ -122,8 +122,6 @@
 
   const handleCompare = (listId) => {
     if(listId === 'screens'){
-      labelCompare.hidden = false;
-
       const data = {
         action: 'check-compare',
         payload: currentTask
