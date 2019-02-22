@@ -129,9 +129,6 @@
       const dataStr = JSON.stringify(data);
       ws.send(dataStr);
     }
-    else {
-      labelCompare.hidden = true;
-    }
   }
 
   window.initTabs = initTabs;
