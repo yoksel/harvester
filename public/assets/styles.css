@@ -496,12 +496,13 @@ INPUT[type="number"] {
 
 .options__tip-list {
   position: absolute;
-  right: 0;
+  z-index: 1;
   min-width: 220px;
   margin: .5rem 0 0 0;
   padding: .5rem;
   border: 2px solid #DDD;
   border-radius: 5px;
+  background: #FFF;
   list-style-position: inside;
   font-size: 13px;
 }
