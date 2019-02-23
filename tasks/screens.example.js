@@ -51,6 +51,33 @@ const tasks = [
       },
     ]
   },
+  {
+    id: 'some-pages-sizes-and-devices',
+    name: 'Some pages with sizes and devices',
+    creditsEnv: 'none',
+    urls: [
+      'https://mysite.com',
+      'https://mysite.com/about'
+    ],
+    screenSizes: [
+      {
+        width: 600,
+        height: 400
+      },
+      {
+        width: 1440,
+        height: 1000
+      },
+    ],
+    devices: [
+      {
+        name: 'iPhone 6'
+      },
+      {
+        name: 'iPad'
+      }
+    ],
+  },
 ];
 
 module.exports = {
