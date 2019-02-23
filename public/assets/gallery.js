@@ -3,7 +3,9 @@
   const fullview = document.querySelector('.fullview');
   const fullviewFader = document.querySelector('.fullview__fader');
   const fullviewSizes = document.querySelector('.fullview__img-sizes');
+  const fullviewImgSWrapper = document.querySelector('.fullview__imgs-wrapper');
   const fullviewImgWrapper = document.querySelector('.fullview__img-wrapper');
+  const fullviewImgWrapperCompare = document.querySelector('.fullview__img-wrapper--compare');
   const fullviewImgOrig = document.querySelector('.fullview__img--orig');
   const fullviewImgCompare = document.querySelector('.fullview__img--compare');
   const fullviewControls = document.querySelectorAll('.fullview__control');
@@ -47,6 +49,7 @@
 
       item.addEventListener('click', (ev) => {
         ev.preventDefault();
+        fullview.hidden = false;
         currentIndex = index;
         setImages();
       })
@@ -61,21 +64,22 @@
       return;
     }
 
+    fullviewImgSWrapper.style = '';
+    fullviewImgWrapperCompare.style = '';
     fullviewSizes.innerHTML = data.sizes;
     fullviewImgOrig.src = data.urls.orig;
     fullviewLink.href = data.pageUrl;
 
-    fullviewImgCompare.hidden = true;
-
     if(data.urls.compare) {
       fullviewImgCompare.src = data.urls.compare;
       fullviewImgCompare.hidden = false;
+      fullviewImgWrapperCompare.style.height = `${fullviewImgOrig.height}px`;
     }
     else {
       fullviewImgCompare.hidden = true;
     }
 
-    fullview.hidden = false;
+    fullviewImgSWrapper.style.width = `${fullviewImgOrig.width}px`;
   };
 
   // ------------------------------

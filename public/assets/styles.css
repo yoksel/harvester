@@ -54,6 +54,7 @@ INPUT[type="number"] {
   /* Hack to fix wrong sizes of images in popup */
   position: absolute !important;
   z-index: -10 !important;
+  left: 0;
   opacity: 0 !important;
   pointer-events: none;
 }
@@ -586,7 +587,6 @@ INPUT[type="number"] {
   margin: 2rem;
   display: flex;
   justify-content: center;
-  align-items: center;
   pointer-events: none;
 }
 
@@ -625,7 +625,6 @@ INPUT[type="number"] {
   fill: #FFF;
 }
 
-
 .fullview__control:focus .fullview__control-arrow {
   fill: greenyellow
 }
@@ -644,6 +643,7 @@ INPUT[type="number"] {
   width: auto;
   display: flex;
   justify-content: center;
+  align-items: center;
   overflow: hidden;
   padding: 2rem 0;
 }
@@ -654,6 +654,7 @@ INPUT[type="number"] {
   right: 0;
   bottom: 0;
   left: 0;
+  margin: auto;
 }
 
 .fullview__img {
