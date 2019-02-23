@@ -15,7 +15,12 @@
       <span class="img-compare-helper"></span>
       {{/pathCompare}}
       <span class="page-screen__img-sizes">
-        {{sizes.width}}x{{sizes.height}}
+        {{#sizes.width}}
+          {{sizes.width}}x{{sizes.height}}
+        {{/sizes.width}}
+        {{#device}}
+          ({{device}})
+        {{/device}}
       </span>
       <a
         class="page-screen__link page-screen__link--url"

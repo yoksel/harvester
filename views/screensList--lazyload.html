@@ -5,6 +5,14 @@
         class="page-screen__img-placeholder"
         data-src="{{path}}"
         style="background-image: url({{path}});"></span>
+      <span class="page-screen__img-sizes">
+        {{#sizes.width}}
+          {{sizes.width}}x{{sizes.height}}
+        {{/sizes.width}}
+        {{#device}}
+          ({{device}})
+        {{/device}}
+      </span>
       <a
         class="page-screen__link page-screen__link--url"
         target="_blank"
