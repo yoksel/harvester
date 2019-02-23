@@ -59,6 +59,7 @@
     if (data.status === 'success') {
       targetElem.innerHTML = data.data;
       window.initTabs();
+      window.initGallery();
     }
     else if (data.status === 'download') {
       const {name, url} = data.data;
@@ -66,10 +67,6 @@
       taskDownloadData.href = url;
       taskDownloadData.hidden = false;
       taskPrepareData.hidden = true;
-    }
-
-    if(data.task === 'show collected data') {
-      window.initGallery();
     }
   };
 
