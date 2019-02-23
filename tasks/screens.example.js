@@ -26,7 +26,7 @@ const tasks = [
   {
     id: 'some-pages',
     name: 'Some pages',
-    creditsEnv: 'prod',
+    creditsEnv: 'none',
     urls: [
       'https://mysite.com',
       'https://mysite.com/about'
