@@ -1,3 +1,12 @@
+const selectors = {
+  username: '#user',
+  password: '#pass',
+  submit: '.loginform__submit',
+  error: '.loginform__error',
+  banner: '.my-lovely-banner',
+  closeBanner: '.my-lovely-banner__close'
+};
+
 module.exports = {
   beforeStart: {
     url: 'http://some-site.com',
@@ -6,12 +15,8 @@ module.exports = {
     ]
   },
   selectors: {
-    username: '#user',
-    password: '#pass',
-    submit: '.loginform__submit',
-    error: '.loginform__error',
-    banner: '.my-lovely-banner',
-    closeBanner: '.my-lovely-banner__close'
+    dev: selectors,
+    prod: selectors
   },
   env: {
     prod: {
