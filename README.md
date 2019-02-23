@@ -36,6 +36,24 @@ Useful if you need download all your demos from external service.
 
 You'll see page wich allows you to start ans stop tasks, see collected data and to download it in archive.
 
+
+## Previews
+
+**Collected links**
+
+<img src="https://github.com/yoksel/harvester/blob/master/public/assets/previews/links.png"
+alt="Links task result" width="500" />
+
+**Collected links with screenshots**
+
+<img src="https://github.com/yoksel/harvester/blob/master/public/assets/previews/links__screens.png"
+alt="Links task result with screens" width="500" />
+
+**Full view of the screenshot with diff**
+
+<img src="https://github.com/yoksel/harvester/blob/master/public/assets/previews/fullview--diff.png"
+alt="Full view with diff" width="500" />
+
 ---
 
 Tool is in development. If you find a bug, [fill an issue](https://github.com/yoksel/harvester/issues/new)
