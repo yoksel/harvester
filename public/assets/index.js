@@ -11,6 +11,7 @@
   const taskDownloadData = document.querySelector('.task-control--download-data');
   const taskOptions = document.querySelector('.options--task');
   const inputCompare = document.querySelector('.options__input--compare');
+  const reloadControl = document.querySelector('.reload-control');
 
   let currentTask = {};
   let taskIsRunning = false;
@@ -23,6 +24,23 @@
   tasks.forEach(task => {
     task.addEventListener('click', event => {
       event.preventDefault();
+
+      const groupTitle = task.dataset.grouptitle;
+      const taskTitle = task.dataset.tasktitle;
+      const taskId = task.dataset.taskid;
+      const listId = task.dataset.listid;
+      const data = {listId, taskId};
+      currentTask = data;
+      groupNameElem.innerHTML = groupTitle;
+      taskNameElem.innerHTML = taskTitle;
+
+      if(ws.readyState === 3) {
+        statusTextElem.value = ws.messages.stopped;
+        targetElem.innerHTML = '';
+        statusTextElem.dataset.status = '';
+        return;
+      }
+
       statusTextElem.value = '';
       targetElem.innerHTML = '';
       statusTextElem.dataset.status = '';
@@ -33,19 +51,10 @@
       taskDownloadData.hidden = true;
       inputCompare.checked = false;
 
-      const groupTitle = task.dataset.grouptitle;
-      const taskTitle = task.dataset.tasktitle;
-      const taskId = task.dataset.taskid;
-      const listId = task.dataset.listid;
-      const data = {listId, taskId};
-      currentTask = data;
       taskRunner.innerHTML = 'Start';
       body.dataset.taskGroup = listId;
 
       handleCompare(listId);
-
-      groupNameElem.innerHTML = groupTitle;
-      taskNameElem.innerHTML = taskTitle;
     });
   });
 
@@ -131,6 +140,10 @@
       ws.send(dataStr);
     }
   }
+
+  reloadControl.addEventListener('click', () => {
+    location.reload(true);
+  })
 
   window.initTabs = initTabs;
 }(window));

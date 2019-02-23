@@ -6,16 +6,24 @@
   const taskPrepareData = document.querySelector('.task-control--prepare-data');
   const taskDownloadData = document.querySelector('.task-control--download-data');
   const inputCompare = document.querySelector('.options__input--compare');
+  const allInputs = document.querySelectorAll('.container input, .container button');
+  const reloadControl = document.querySelector('.reload-control');
+  const messages = {
+    established: 'Connection established',
+    closed: 'Connection was closed correctly',
+    lost: 'Connection lost', // proccess was killed
+    stopped: '*** Server was stopped. Futher requests will not be processed. ***\n\n'
+  };
 
   ws.onopen = function () {
-    console.log('Connection established');
+    console.log(messages.established);
   };
 
   ws.onclose = function (event) {
     if (event.wasClean) {
-      console.log('Connection was closed correctly');
+      console.log(messages.closed);
     } else {
-      console.log('Connection lost'); // например, "убит" процесс сервера
+      console.log(messages.lost);
     }
 
     console.log(`Code: ${event.code}`);
@@ -25,9 +33,14 @@
     }
 
     if (event.code === 1006) {
-      const message = '*** Server was stopped. Futher requests will not be processed. ***\n\n';
+      const message = messages.stopped;
       statusTextElem.value = message + statusTextElem.value;
       statusTextElem.dataset.status = '';
+      reloadControl.hidden = false;
+
+      allInputs.forEach(input => {
+        input.disabled = true;
+      });
     }
   };
 
@@ -74,6 +87,7 @@
     console.error('Error: ' + error.message);
   };
 
+  ws.messages = messages;
   window.ws = ws;
 
 }(window));

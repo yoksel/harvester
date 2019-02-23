@@ -5,13 +5,26 @@
     <link rel="stylesheet" href="assets/styles.css">
   </head>
   <body class="page">
-    <div class="wrapper">
-      <h1>🌪Harvester</h1>
+    <svg class="svg-defs">
+      <symbol id="arrow-left" viewBox="0 0 30 48.653"><path d="M2.441 23.004L0 25.481l2.441 2.477L22.84 48.653l4.884-4.955-17.692-18.486L30 4.954 25.118 0 2.441 23.004z"/></symbol>
+      <symbol id="arrow-right" viewBox="0 0 30 48.652"><path d="M27.559 23.004L4.882 0 0 4.954l19.968 20.258L2.275 43.698l4.885 4.954 20.398-20.694L30 25.481l-2.441-2.477z"/></symbol>
+      <symbol id="reload" viewBox="0 0 32 32">
+        <path d="M27.802 5.197c-2.925-3.194-7.13-5.197-11.803-5.197-8.837 0-16 7.163-16 16h3c0-7.18 5.82-13 13-13 3.844 0 7.298 1.669 9.678 4.322l-4.678 4.678h11v-11l-4.198 4.197z"></path>
+        <path d="M29 16c0 7.18-5.82 13-13 13-3.844 0-7.298-1.669-9.678-4.322l4.678-4.678h-11v11l4.197-4.197c2.925 3.194 7.13 5.197 11.803 5.197 8.837 0 16-7.163 16-16h-3z"></path>
+      </symbol>
+    </svg>
 
-      <svg class="svg-defs">
-        <symbol id="arrow-left" viewBox="0 0 30 48.653"><path d="M2.441 23.004L0 25.481l2.441 2.477L22.84 48.653l4.884-4.955-17.692-18.486L30 4.954 25.118 0 2.441 23.004z"/></symbol>
-        <symbol id="arrow-right" viewBox="0 0 30 48.652"><path d="M27.559 23.004L4.882 0 0 4.954l19.968 20.258L2.275 43.698l4.885 4.954 20.398-20.694L30 25.481l-2.441-2.477z"/></symbol>
-      </svg>
+    <div class="wrapper">
+      <header class="header">
+        <h1>🌪Harvester</h1>
+
+        <button class="reload-control" hidden>
+          <svg class="reload-control__icon" aria-labeledby="title">
+            <title id="title">Reload</title>
+            <use xlink:href="#reload"/>
+          </svg>
+        </button>
+      </header>
 
       <div class="container">
         <div class="aside">
