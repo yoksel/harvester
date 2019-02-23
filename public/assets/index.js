@@ -1,4 +1,5 @@
 (function (window) {
+  const body = document.body;
   const tasks = document.querySelectorAll('.task');
   const groupNameElem = document.querySelector('.title__group-name');
   const taskNameElem = document.querySelector('.title__task-name');
@@ -39,7 +40,7 @@
       const data = {listId, taskId};
       currentTask = data;
       taskRunner.innerHTML = 'Start';
-      taskOptions.dataset.taskGroup = listId;
+      body.dataset.taskGroup = listId;
 
       handleCompare(listId);
 

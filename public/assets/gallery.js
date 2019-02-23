@@ -31,6 +31,7 @@
 
   const initGallery = () => {
     pageScreensLinks = document.querySelectorAll('.page-screen__link--img');
+    pageScreensList = [];
 
     pageScreensLinks.forEach((item, index) => {
       const urls = getImageUrls(item);
@@ -80,17 +81,20 @@
   // ------------------------------
 
   const getImageUrls = (elem) => {
-    const images = elem.parentNode.querySelectorAll('img');
+    const images = elem.parentNode.querySelectorAll('img, .page-screen__img-placeholder');
     images.reduce = [].reduce;
-    const imageUrls = images.reduce((prev, item) => {
+    let imageUrls = {};
+
+    imageUrls = images.reduce((prev, item) => {
       if(item.classList.contains('page-screen__img--compare')) {
         prev.compare = item.src;
       }
       else {
-        prev.orig = item.src;
+        prev.orig = item.src || item.dataset.src;
       }
       return prev;
     }, {});
+
 
     return imageUrls;
   };
@@ -99,7 +103,7 @@
 
   const getImageSizes = (elem) => {
     const sizesElem = elem.parentNode.querySelector('.page-screen__img-sizes');
-    return sizesElem.innerHTML;
+    return sizesElem ? sizesElem.innerHTML : '';
   }
 
   // ------------------------------
