@@ -74,7 +74,7 @@ alt="Full view"/>
 **Full view of the screenshot with diff**
 
 <img src="https://github.com/yoksel/harvester/blob/master/public/assets/previews/fullview--diff.png"
-alt="Full view with diff" width="500" />
+alt="Full view with diff"/>
 
 ---
 
