@@ -6,19 +6,35 @@
 * screenshots
 * code snippets
 
-## Tasks
+Describe tasks in configs and tool will allow you to run it from web interface:
+
+<img src="https://github.com/yoksel/harvester/blob/master/public/assets/previews/web-interface.png"
+alt="Harvester web interface"/>
+
+The result will be printed to page:
+
+<img src="https://github.com/yoksel/harvester/blob/master/public/assets/previews/screens.png"
+alt="Harvester web interface"/>
+
+## Available tasks
 
 ### Links
 
 Can be useful for old large sites with vague structure. You can found something unexpected.
 
+Config examle: <a href="https://github.com/yoksel/harvester/blob/master/tasks/urls.example.js">tasks/urls.example.js</a>
+
 ### Screenshots
 
 Tool can make screenshots of given pages with given dimensions and device emulation. You can run task twice to compare result with previous.
 
+Config examle: <a href="https://github.com/yoksel/harvester/blob/master/tasks/screens.example.js">tasks/screens.example.js</a>
+
 ### Snippets
 
 Useful if you need download all your demos from external service.
+
+Config examle: <a href="https://github.com/yoksel/harvester/blob/master/tasks/snippets.example.js">tasks/snippets.example.js</a>
 
 ## Usage
 
@@ -28,26 +44,32 @@ Useful if you need download all your demos from external service.
 
 2. Run `npm i`
 
-3. Rename `credits-example.js` to `credits.js` and fill it with real logins and passwords. `credits.js` is in `gitignore` and will not be commited
+3. Rename `credits-example.js` to `credits.js` and fill it with real logins and passwords. It'll allow you to log in and visit a site as a logged in user.
 
-4. Take needed example file in tasks, rename it without `example` (`screens.example.js` -> `screens.js`) and fill it with real data. Task files are in `gitignore` and will not be commited
+4. Take needed example file in tasks, rename it without `example` (`screens.example.js` -> `screens.js`) and fill it with real data.
 
 5. Run `npm start` and open [localhost:3007](http://localhost:3007/)
 
-You'll see page wich allows you to start ans stop tasks, see collected data and to download it in archive.
+You'll see page wich allows you to start and stop tasks, see collected data and to download it in archive.
 
+`credits.js` and task files are in `gitignore` and will not be commited. Don't push your passwords to the public repository.
 
 ## Previews
 
 **Collected links**
 
 <img src="https://github.com/yoksel/harvester/blob/master/public/assets/previews/links.png"
-alt="Links task result" width="500" />
+alt="Links task result"/>
 
 **Collected links with screenshots**
 
 <img src="https://github.com/yoksel/harvester/blob/master/public/assets/previews/links__screens.png"
-alt="Links task result with screens" width="500" />
+alt="Links task result with screens"/>
+
+**Full view of the screenshot**
+
+<img src="https://github.com/yoksel/harvester/blob/master/public/assets/previews/fullview.png"
+alt="Full view"/>
 
 **Full view of the screenshot with diff**
 
