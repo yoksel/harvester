@@ -54,7 +54,7 @@
       taskRunner.innerHTML = 'Start';
       body.dataset.taskGroup = listId;
 
-      handleCompare(listId);
+      checkCollectedData(listId);
     });
   });
 
@@ -130,15 +130,13 @@
     });
   };
 
-  const handleCompare = (listId) => {
-    if(listId === 'screens'){
-      const data = {
-        action: 'check-compare',
-        payload: currentTask
-      };
-      const dataStr = JSON.stringify(data);
-      ws.send(dataStr);
-    }
+  const checkCollectedData = (listId) => {
+    const data = {
+      action: 'check-collected-data',
+      payload: currentTask
+    };
+    const dataStr = JSON.stringify(data);
+    ws.send(dataStr);
   }
 
   reloadControl.addEventListener('click', () => {

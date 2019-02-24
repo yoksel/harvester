@@ -3,9 +3,12 @@
   const targetElem = document.querySelector('.content');
   const statusTextElem = document.querySelector('.status__text');
   const statusNameElem = document.querySelector('.status__name');
+  const taskShowData = document.querySelector('.task-control--show-data');
   const taskPrepareData = document.querySelector('.task-control--prepare-data');
   const taskDownloadData = document.querySelector('.task-control--download-data');
   const inputCompare = document.querySelector('.options__input--compare');
+  const inputShowCompare = document.querySelector('.options__input--show-compare');
+  const inputOpacity = document.querySelector('.options__input--opacity');
   const allInputs = document.querySelectorAll('.container input, .container button');
   const reloadControl = document.querySelector('.reload-control');
   const messages = {
@@ -61,8 +64,13 @@
       statusTextElem.dataset.status = data.status;
     }
 
-    if(data.task === 'check compare') {
+    if(data.task === 'check collected data') {
+      taskShowData.disabled = !data.data.isFileExist;
+      taskPrepareData.disabled = !data.data.isFileExist;
+
       inputCompare.disabled = !data.data.isFileExist;
+      inputShowCompare.disabled = !data.data.isFileExist;
+      inputOpacity.disabled = !data.data.isFileExist;
     }
 
     if(!data.status || !data.data) {
