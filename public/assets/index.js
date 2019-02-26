@@ -14,7 +14,7 @@
   const reloadControl = document.querySelector('.reload-control');
 
   let currentTask = {};
-  let taskIsRunning = false;
+  window.taskIsRunning = false;
 
   taskRunner.disabled = true;
   taskShowData.disabled = true;
@@ -59,7 +59,7 @@
   });
 
   taskRunner.addEventListener('click', () => {
-    if(taskIsRunning === true) {
+    if(window.taskIsRunning === true) {
       // STOP task
       taskShowData.disabled = false;
       taskPrepareData.disabled = false;
@@ -68,7 +68,7 @@
       const dataStr = JSON.stringify(data);
       ws.send(dataStr);
 
-      taskIsRunning = false;
+      window.taskIsRunning = false;
       taskRunner.innerHTML = 'Start';
     }
     else {
@@ -80,7 +80,7 @@
 
       statusTextElem.dataset.status = '';
       taskRunner.innerHTML = 'Stop';
-      taskIsRunning = true;
+      window.taskIsRunning = true;
       targetElem.innerHTML = '';
     }
   });

@@ -3,6 +3,7 @@
   const targetElem = document.querySelector('.content');
   const statusTextElem = document.querySelector('.status__text');
   const statusNameElem = document.querySelector('.status__name');
+  const taskRunner = document.querySelector('.task-control--runner');
   const taskShowData = document.querySelector('.task-control--show-data');
   const taskPrepareData = document.querySelector('.task-control--prepare-data');
   const taskDownloadData = document.querySelector('.task-control--download-data');
@@ -71,6 +72,18 @@
       inputCompare.disabled = !data.data.isFileExist;
       inputShowCompare.disabled = !data.data.isFileExist;
       inputOpacity.disabled = !data.data.isFileExist;
+    }
+
+    if (data.status === 'done') {
+      if(inputCompare.disabled) {
+        inputCompare.disabled = false;
+        inputShowCompare.disabled = false;
+      }
+      taskShowData.disabled = false;
+      taskPrepareData.disabled = false;
+
+      window.taskIsRunning = false;
+      taskRunner.innerHTML = 'Start';
     }
 
     if(!data.status || !data.data) {

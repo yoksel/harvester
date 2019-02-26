@@ -298,7 +298,8 @@ INPUT[type="number"] {
   background: hsl(60, 80%, 80%);
 }
 
-.status__text[data-status="success"] {
+.status__text[data-status="success"],
+.status__text[data-status="done"] {
   background: hsl(80, 80%, 80%);
 }
 
