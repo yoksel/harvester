@@ -75,6 +75,8 @@
       // START task
       taskShowData.disabled = true;
       taskPrepareData.disabled = true;
+      setCompareScreensInTask();
+
       const dataStr = JSON.stringify(currentTask);
       ws.send(dataStr);
 
@@ -103,7 +105,9 @@
     ws.send(dataStr);
   });
 
-  inputCompare.addEventListener('click', () => {
+  inputCompare.addEventListener('click', setCompareScreensInTask);
+
+  function setCompareScreensInTask() {
     const data = {
       action: 'compareScreens',
       payload: {
@@ -113,7 +117,7 @@
 
     const dataStr = JSON.stringify(data);
     ws.send(dataStr);
-  });
+  }
 
   const initTabs = () => {
     const tabsRadioInputs = document.querySelectorAll('.tabs__radio');
