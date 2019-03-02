@@ -4,6 +4,7 @@
   const fullviewFader = document.querySelector('.fullview__fader');
   const fullviewSizes = document.querySelector('.fullview__img-sizes');
   const fullviewImgSWrapper = document.querySelector('.fullview__imgs-wrapper');
+  const fullviewImgsScrollbox = document.querySelector('.fullview__imgs-scrollbox');
   const fullviewImgWrapper = document.querySelector('.fullview__img-wrapper');
   const fullviewImgWrapperCompare = document.querySelector('.fullview__img-wrapper--compare');
   const fullviewImgOrig = document.querySelector('.fullview__img--orig');
@@ -21,6 +22,7 @@
 
   fullviewFader.addEventListener('click', () => {
     fullview.hidden = true;
+    body.classList.remove('page--show-fullview');
   });
 
   document.addEventListener('keyup', (ev) => {
@@ -52,6 +54,7 @@
         fullview.hidden = false;
         currentIndex = index;
         setImages();
+        body.classList.add('page--show-fullview');
       })
     })
   };
@@ -63,9 +66,6 @@
     if(!data) {
       return;
     }
-
-    fullviewImgSWrapper.style = '';
-    fullviewImgWrapperCompare.style = '';
     fullviewSizes.innerHTML = data.sizes;
     fullviewImgOrig.src = data.urls.orig;
     fullviewLink.href = data.pageUrl;
@@ -73,13 +73,20 @@
     if(data.urls.compare) {
       fullviewImgCompare.src = data.urls.compare;
       fullviewImgCompare.hidden = false;
-      fullviewImgWrapperCompare.style.height = `${fullviewImgOrig.height}px`;
     }
     else {
       fullviewImgCompare.hidden = true;
     }
 
-    fullviewImgSWrapper.style.width = `${fullviewImgOrig.width}px`;
+    const scrollBoxHeight = fullviewImgsScrollbox.clientHeight;
+    const imgHeight = fullviewImgOrig.clientHeight;
+
+    if(imgHeight < scrollBoxHeight) {
+      fullviewImgsScrollbox.style.height=`${imgHeight}px`;
+    }
+    else {
+      fullviewImgsScrollbox.style.height=null;
+    }
   };
 
   // ------------------------------

@@ -146,57 +146,60 @@
 
         <!-- Full view images -->
         <div class="fullview__imgs-wrapper">
-          <div class="fullview__img-wrapper">
-            <!-- Full view top panel -->
-            <div class="fullview__panel fullview__panel--top options options--screens">
-              <label class="options__label options__label--opacity">
-                <span class="options__label-text visually-hidden">
-                  Opacity
-                </span>
-
-                <input
-                  type="number"
-                  min="0"
-                  max="1"
-                  step=".2"
-                  value=".6"
-                  class="options__input options__input--opacity">
-              </label>
-
-              <label class="options__label options__label--show-compare">
-                <input
-                  type="checkbox"
-                  class="options__input options__input--show-compare">
-
-                <span class="options__label-text">
-                  Show compare
-                </span>
-              </label>
-            </div>
-            <!-- /Full view top panel -->
-
-            <img
-              src="http://placekitten.com/200/200"
-              class="fullview__img fullview__img--orig">
-
-            <!-- Full view bottom panel -->
-            <div class="fullview__panel fullview__panel--bottom">
-              <span class="fullview__img-sizes">
-                {{sizes.width}}x{{sizes.height}}
+          <!-- Full view top panel -->
+          <div class="fullview__panel fullview__panel--top options options--screens">
+            <label class="options__label options__label--opacity">
+              <span class="options__label-text visually-hidden">
+                Opacity
               </span>
-              <a
-                class="fullview__link"
-                target="_blank"
-                href="{{url}}">Go to Page</a>
+
+              <input
+                type="number"
+                min="0"
+                max="1"
+                step=".2"
+                value=".6"
+                class="options__input options__input--opacity">
+            </label>
+
+            <label class="options__label options__label--show-compare">
+              <input
+                type="checkbox"
+                class="options__input options__input--show-compare">
+
+              <span class="options__label-text">
+                Show compare
+              </span>
+            </label>
+          </div>
+          <!-- /Full view top panel -->
+
+          <div class="fullview__imgs-scrollbox">
+            <div class="fullview__img-wrapper">
+              <img
+                src="http://placekitten.com/200/200"
+                class="fullview__img fullview__img--orig">
             </div>
-            <!-- /Full view bottom panel -->
+
+            <div class="fullview__img-wrapper fullview__img-wrapper--compare">
+              <img
+                src="http://placekitten.com/200/200"
+                class="fullview__img fullview__img--compare img-compare">
+              <span class="img-compare-helper"></span>
+            </div>
           </div>
-          <div class="fullview__img-wrapper fullview__img-wrapper--compare">
-            <img
-              src="http://placekitten.com/200/200"
-              class="fullview__img fullview__img--compare img-compare">
-            <span class="img-compare-helper"></span>
+
+          <!-- Full view bottom panel -->
+          <div class="fullview__panel fullview__panel--bottom">
+            <span class="fullview__img-sizes">
+              {{sizes.width}}x{{sizes.height}}
+            </span>
+            <a
+              class="fullview__link"
+              target="_blank"
+              href="{{url}}">Go to Page</a>
           </div>
+          <!-- /Full view bottom panel -->
         </div>
       </div>
     </div>
