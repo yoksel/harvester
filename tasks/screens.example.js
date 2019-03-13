@@ -40,6 +40,10 @@ const tasks = [
       'https://mysite.com',
       'https://mysite.com/about'
     ],
+    jsOnPage: () => {
+      const username = document.querySelector('.my_username');
+      username.innerText = 'Petr Petrov';
+    },
     screenSizes: [
       {
         width: 600,
