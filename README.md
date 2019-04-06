@@ -22,19 +22,19 @@ alt="Harvester web interface"/>
 
 Can be useful for old large sites with vague structure. You can found something unexpected.
 
-Config examle: <a href="https://github.com/yoksel/harvester/blob/master/tasks/urls.example.js">tasks/urls.example.js</a>
+Config example: <a href="https://github.com/yoksel/harvester/blob/master/tasks/urls.example.js">tasks/urls.example.js</a>
 
 ### Screenshots
 
 Tool can make screenshots of given pages with given dimensions and device emulation. You can run task twice to compare result with previous.
 
-Config examle: <a href="https://github.com/yoksel/harvester/blob/master/tasks/screens.example.js">tasks/screens.example.js</a>
+Config example: <a href="https://github.com/yoksel/harvester/blob/master/tasks/screens.example.js">tasks/screens.example.js</a>
 
 ### Snippets
 
 Useful if you need download all your demos from external service.
 
-Config examle: <a href="https://github.com/yoksel/harvester/blob/master/tasks/snippets.example.js">tasks/snippets.example.js</a>
+Config example: <a href="https://github.com/yoksel/harvester/blob/master/tasks/snippets.example.js">tasks/snippets.example.js</a>
 
 ## Usage
 
