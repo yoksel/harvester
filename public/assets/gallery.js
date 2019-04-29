@@ -78,14 +78,17 @@
       fullviewImgCompare.hidden = true;
     }
 
+    // Drop height to measure real size
+    fullviewImgsScrollbox.style.height = null;
+
     const scrollBoxHeight = fullviewImgsScrollbox.clientHeight;
     const imgHeight = fullviewImgOrig.clientHeight;
 
     if(imgHeight < scrollBoxHeight) {
-      fullviewImgsScrollbox.style.height=`${imgHeight}px`;
+      fullviewImgsScrollbox.style.height = `${imgHeight}px`;
     }
     else {
-      fullviewImgsScrollbox.style.height=null;
+      fullviewImgsScrollbox.style.height = null;
     }
   };
 
