@@ -595,7 +595,7 @@ INPUT[type="number"] {
   margin: 2rem;
   display: flex;
   justify-content: center;
-  pointer-events: none;
+  /* pointer-events: none; */
 }
 
 .fullview__controls {
@@ -646,7 +646,7 @@ INPUT[type="number"] {
   overflow: auto;
   display: flex;
   justify-content: center;
-  pointer-events: auto;
+  /* pointer-events: none; */
 }
 
 .fullview__imgs-scrollbox {
@@ -685,6 +685,7 @@ INPUT[type="number"] {
   justify-content: space-between;
   align-items: center;
   color: #FFF;
+  pointer-events: all;
 }
 
 .fullview__panel--top {
