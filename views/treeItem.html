@@ -5,7 +5,12 @@
   {{#data.screens}}
     <span class="pages-item__screen" style="background-image: url({{path}});"></span>
   {{/data.screens}}
-  <span>{{data.pathname}}</span>
+  {{#data.theme}}
+    <b
+      class="pages-item__theme">
+      {{data.theme}}
+    </b>
+  {{/data.theme}}
   {{#data.from}}
     <a
       class="pages-item__from"

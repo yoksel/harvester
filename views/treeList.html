@@ -6,6 +6,12 @@
     {{#data.screens}}
       <span class="pages-item__screen" style="background-image: url({{path}});"></span>
     {{/data.screens}}
+    {{#data.theme}}
+      <b
+        class="pages-item__theme">
+        {{data.theme}}
+      </b>
+    {{/data.theme}}
     <span>{{data.pathname}}</span>
     {{#data.from}}
       <a
