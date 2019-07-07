@@ -21,6 +21,14 @@ const tasks = [
     makeScreens: true,
     // if true, ignores height from screenSizes
     screenFullPage: false,
+    // place to add names of subetasks (UNDERCONSTRUCTION)
+    dataToCollect: [
+      {
+        name: 'theme'
+      }
+    ],
+    // Need to run 'some-task-runned-before' first to collect it
+    urlsFile: "public/some-task-runned-before/data/collected-data.json",
     ignoreStrings: [
       '#',
       'void(0)',
