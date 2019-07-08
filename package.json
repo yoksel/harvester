@@ -25,7 +25,7 @@
     "mustache": "^3.0.0",
     "node-static": "^0.7.11",
     "opn": "^5.4.0",
-    "puppeteer": "^1.8.0",
+    "puppeteer": "^1.18.1",
     "ws": "^6.0.0"
   },
   "devDependencies": {
